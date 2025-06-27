@@ -7,6 +7,7 @@ extends Area2D
 var growth := 0.0
 
 var SPRITE_HEIGHT = 128.0
+var GOTTAGOFAST = 10.0  # 1.0 for true game
 @onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, 66.0], $Step3: [66.0, 100.0]}
 
 
@@ -16,7 +17,7 @@ func _ready() -> void:
 	update_sprites()
 
 func _process(delta: float) -> void:
-	grow(delta)
+	grow(delta * GOTTAGOFAST)
 
 
 func grow(speed: float) -> void:

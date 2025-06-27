@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmw7hsbx4yccu"]
+[gd_scene load_steps=4 format=3 uid="uid://cmw7hsbx4yccu"]
 
 [ext_resource type="Script" uid="uid://ud5pbaxuvlvl" path="res://scenes/plant/test_plant.gd" id="1_gb271"]
 [ext_resource type="PackedScene" uid="uid://hgrmaqq3p8gk" path="res://scenes/plant/plant.tscn" id="1_qeanf"]
+[ext_resource type="PackedScene" uid="uid://cxb35anmito8y" path="res://scenes/cop/cop.tscn" id="3_mp7bh"]
 
 [node name="TestPlant" type="Node2D"]
 script = ExtResource("1_gb271")
@@ -14,3 +15,6 @@ position = Vector2(212, 324)
 
 [node name="Plante3" parent="." instance=ExtResource("1_qeanf")]
 position = Vector2(494, 183)
+
+[node name="Cop" parent="." instance=ExtResource("3_mp7bh")]
+position = Vector2(759, 273)
