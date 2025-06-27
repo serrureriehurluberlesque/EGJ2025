@@ -28,8 +28,10 @@ func grow(speed: float) -> void:
 func update_sprites():
 	for s in sprites:
 		var r = s.texture.region
-		r.size = Vector2(r.size.x, min(SPRITE_HEIGHT, max(1, round(SPRITE_HEIGHT * growth / 100.0))))
+		var h = min(SPRITE_HEIGHT, max(1, round(SPRITE_HEIGHT * growth / 100.0)))
+		r.size = Vector2(r.size.x, h)
 		s.texture.region = r
+		s.position = Vector2(0, -h / 2)
 	
 	for s in sprites:
 		s.modulate.a = compute_growth_show(sprites[s])
