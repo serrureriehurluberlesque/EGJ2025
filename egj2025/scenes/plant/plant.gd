@@ -1,5 +1,5 @@
 class_name Plant
-extends Node2D
+extends Area2D
 
 @export var is_legal := false
 @export var value := 100.0

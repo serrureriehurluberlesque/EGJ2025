@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://hgrmaqq3p8gk"]
+[gd_scene load_steps=7 format=3 uid="uid://hgrmaqq3p8gk"]
 
 [ext_resource type="Script" uid="uid://dke0e3xft8lwi" path="res://scenes/plant/plant.gd" id="1_gm68k"]
 [ext_resource type="Texture2D" uid="uid://dfx2gj5vldw3x" path="res://scenes/plant/assets/tileset.png" id="3_85esa"]
@@ -15,7 +15,10 @@ region = Rect2(64, 220, 64, 128)
 atlas = ExtResource("3_85esa")
 region = Rect2(0, 214, 64, 128)
 
-[node name="Plant" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_gm68k"]
+
+[node name="Plant" type="Area2D"]
+monitoring = false
 script = ExtResource("1_gm68k")
 
 [node name="Step1" type="Sprite2D" parent="."]
@@ -26,3 +29,6 @@ texture = SubResource("AtlasTexture_gm68k")
 
 [node name="Step3" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_85esa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gm68k")
