@@ -7,6 +7,14 @@ extends Node2D
 
 var growth := 0.0
 
+var SPRITE_HEIGHT = 128.0
+@onready var sprites = [$Step1, $Step2, $Step3]
+
+
+func _ready() -> void:
+	for s in sprites:
+		s.texture = s.texture.duplicate()
+	update_sprites()
 
 func _process(delta: float) -> void:
 	grow(delta)
@@ -14,7 +22,15 @@ func _process(delta: float) -> void:
 
 func grow(speed: float) -> void:
 	growth = min(max_growth, growth + speed)
-	$Top.position = Vector2(0, -growth)
+	update_sprites()
+
+
+func update_sprites():
+	for s in sprites:
+		var r = s.texture.region
+		r.size = Vector2(r.size.x, min(SPRITE_HEIGHT, max(1, round(SPRITE_HEIGHT * growth / 100.0))))
+		print(r)
+		s.texture.region = r
 
 
 func saw_illegal() -> bool:
