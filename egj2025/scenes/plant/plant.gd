@@ -8,7 +8,7 @@ extends Node2D
 var growth := 0.0
 
 var SPRITE_HEIGHT = 128.0
-@onready var sprites = [$Step1, $Step2, $Step3]
+@onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, 66.0], $Step3: [66.0, 100.0]}
 
 
 func _ready() -> void:
@@ -29,9 +29,20 @@ func update_sprites():
 	for s in sprites:
 		var r = s.texture.region
 		r.size = Vector2(r.size.x, min(SPRITE_HEIGHT, max(1, round(SPRITE_HEIGHT * growth / 100.0))))
-		print(r)
 		s.texture.region = r
+	
+	for s in sprites:
+		s.modulate.a = compute_growth_show(sprites[s])
+	
 
+func compute_growth_show(interval):
+	if interval[0] < growth and growth < interval[1]:
+		return 1.0
+	else:
+		if growth <= interval[0]:
+			return min(1, max(0, 1 - (interval[0] - growth) / 10.0))
+		else:
+			return min(1, max(0, 1 - (growth - interval[1]) / 10.0))
 
 func saw_illegal() -> bool:
 	return not is_legal and growth > 20.0
