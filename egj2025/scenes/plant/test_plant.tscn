@@ -6,11 +6,11 @@
 [node name="TestPlant" type="Node2D"]
 script = ExtResource("1_gb271")
 
-[node name="Plant" parent="." instance=ExtResource("1_qeanf")]
+[node name="Plante" parent="." instance=ExtResource("1_qeanf")]
 position = Vector2(160, 118)
 
-[node name="Plant2" parent="." instance=ExtResource("1_qeanf")]
+[node name="Plante2" parent="." instance=ExtResource("1_qeanf")]
 position = Vector2(212, 324)
 
-[node name="Plant3" parent="." instance=ExtResource("1_qeanf")]
+[node name="Plante3" parent="." instance=ExtResource("1_qeanf")]
 position = Vector2(494, 183)

@@ -1,4 +1,3 @@
-class_name Plant
 extends Area2D
 
 @export var is_legal := false
