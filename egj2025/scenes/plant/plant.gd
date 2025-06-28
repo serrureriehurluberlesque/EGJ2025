@@ -9,7 +9,7 @@ signal cutted(value)
 var SPRITE_HEIGHT = 96.0
 var LIMITMIN = 66.0
 var LIMITMAX = 133.0
-var GOTTAGOFAST = 10.0  # 1.0 for true game
+var GOTTAGOFAST = 0.1  # 1.0 for true game
 var MAXCUTTAGE = 1.0
 
 var growth := 0.0
@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 func grow(speed: float) -> void:
 	var interest = is_interesting()
 	
-	growth = min(2 * full_growth, growth + speed)
+	growth = min(2 * full_growth, growth + speed * 50.0)
 	
 	if interest != is_interesting():
 		for c in get_overlapping_areas():
