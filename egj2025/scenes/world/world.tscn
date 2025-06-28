@@ -357,7 +357,7 @@ position = Vector2(901, 960)
 
 [node name="Plants" type="Node2D" parent="."]
 
-[node name="MenuButton" type="Button" parent="."]
+[node name="HelpButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -367,7 +367,7 @@ offset_top = -99.0
 offset_right = 281.0
 offset_bottom = -41.0
 grow_vertical = 0
-text = "Menu"
+text = "Aide"
 
 [node name="Menu" parent="." instance=ExtResource("12_srmg5")]
 visible = false
@@ -463,6 +463,6 @@ libraries = {
 [connection signal="pressed" from="RackOutils/Buttons/PlantesRouges/PRButton" to="." method="plant_red_mode"]
 [connection signal="pressed" from="RackOutils/Buttons/Cisors/CButton" to="." method="cut_mode"]
 [connection signal="pressed" from="RackOutils/Buttons/WateringCan/WCButton" to="." method="grow_mode"]
-[connection signal="pressed" from="MenuButton" to="." method="open_menu"]
+[connection signal="pressed" from="HelpButton" to="." method="open_menu"]
 [connection signal="closed" from="Menu" to="." method="close_menu"]
 [connection signal="pressed" from="GameOverPanel/Restart" to="." method="_on_restart_pressed"]
