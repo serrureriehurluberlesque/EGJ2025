@@ -150,3 +150,13 @@ position = Vector2(0, -64)
 amount = 20
 texture = ExtResource("5_hf3g8")
 process_material = SubResource("ParticleProcessMaterial_53d6k")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -34.0
+offset_top = -27.0
+offset_right = -30.0
+max_value = 1.0
+value = 1.0
+fill_mode = 3
+show_percentage = false

@@ -61,6 +61,8 @@ func _process(delta: float) -> void:
 		$Interessant.amount_ratio = 1.0
 	else:
 		$Interessant.amount_ratio = 0.0
+		
+	$ProgressBar.value = 1 - (growth - LIMITMIN) / (LIMITMAX - LIMITMIN)
 
 
 func grow(speed: float, fast=true) -> void:
@@ -72,9 +74,12 @@ func grow(speed: float, fast=true) -> void:
 	growth = min(2 * full_growth, growth + speed * 50.0)
 	
 	if not interest and is_interesting():
+		$ProgressBar.show()
 		for c in get_overlapping_areas():
 			print("plant called")
 			c.regarde_attentivement(self)
+	elif interest and not is_interesting():
+		$ProgressBar.hide()
 	
 	update_sprites()
 
