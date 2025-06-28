@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bpa3fsii2sy00" path="res://scenes/plant/assets/tileset.png" id="3_85esa"]
 [ext_resource type="Texture2D" uid="uid://csethudy6utv8" path="res://scenes/plant/assets/terron.png" id="4_4t85h"]
 [ext_resource type="Texture2D" uid="uid://dqvfgspnlx6yi" path="res://scenes/plant/assets/etoile.png" id="5_hf3g8"]
-[ext_resource type="Texture2D" uid="uid://clmogb3wneiw7" path="res://icon.svg" id="6_53d6k"]
+[ext_resource type="Texture2D" uid="uid://dpn3c4hwapxfp" path="res://scenes/plant/assets/dollar.png" id="6_53d6k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4t85h"]
 atlas = ExtResource("3_85esa")
@@ -107,11 +107,15 @@ color_ramp = SubResource("GradientTexture1D_hf3g8")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dkywt"]
 particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
 direction = Vector3(1, -1, 0)
 spread = 0.0
 initial_velocity_min = 800.0
 initial_velocity_max = 800.0
 gravity = Vector3(0, 0, 0)
+scale_min = 2.5
+scale_max = 2.5
 
 [node name="Plant" type="Area2D"]
 collision_layer = 2
@@ -162,7 +166,7 @@ texture = ExtResource("5_hf3g8")
 process_material = SubResource("ParticleProcessMaterial_53d6k")
 
 [node name="Pognon" type="GPUParticles2D" parent="."]
-amount = 5
+amount = 12
 amount_ratio = 0.0
 texture = ExtResource("6_53d6k")
 process_material = SubResource("ParticleProcessMaterial_dkywt")

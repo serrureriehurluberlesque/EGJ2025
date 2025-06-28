@@ -36,6 +36,7 @@ enum Mode {PLANT_RED_MODE, PLANT_BLUE_MODE, CUT_MODE, GROW_MODE}
 var plants = {}
 var total_cop = 0
 var moneyy = 100.0
+var displayed_moneyy = 100.0
 var current_mode: Mode
 var selected_button: TextureButton
 var surbrillanced_tile_coords: Vector2i
@@ -112,7 +113,10 @@ func harvest_plant(price, coords):
 	display_moneyy()
 
 func display_moneyy():
+	if moneyy > displayed_moneyy:
+		$AnimationPlayer.play("cash")
 	$MoneyyLabel.text = "Money: %d$" % moneyy
+	displayed_moneyy = moneyy
 
 func plant_blue_mode():
 	current_mode = Mode.PLANT_BLUE_MODE
