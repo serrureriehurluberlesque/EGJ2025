@@ -28,6 +28,11 @@ func _ready() -> void:
 			s.modulate.r = 0.45
 		else:
 			s.modulate.g = 0.85
+	
+	if is_legal:
+		$Interessant.modulate.r = 0.0
+	else:
+		$Interessant.modulate.b = 0.0
 	update_sprites()
 
 
@@ -50,6 +55,11 @@ func _process(delta: float) -> void:
 		modulate.a = 1.0 - removing
 		if removing >= 1.0:
 			queue_free()
+	
+	if is_interesting():
+		$Interessant.amount_ratio = 1.0
+	else:
+		$Interessant.amount_ratio = 0.0
 
 
 func grow(speed: float, fast=true) -> void:
