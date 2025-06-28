@@ -159,9 +159,18 @@ func _on_cop_timer_timeout() -> void:
 	
 	new_cop.position = $CopSpawn.position
 	new_cop.to_be_seen = n
+	new_cop.connect("bust", show_game_over)
 	add_child(new_cop)
 	$CopTimer.wait_time = max(1.5, WAIT_COP * 0.9 ** total_cop * (0.75 + randf() / 2.0))
 	total_cop += 1
 	$CopTimer.start()
 	await get_tree().create_timer(4.5).timeout
 	$Player.start_talking(n)
+	
+func show_game_over() -> void:
+	await get_tree().create_timer(3).timeout
+	# TODO pause game
+	$GameOverPanel.show()
+
+func _on_restart_pressed() -> void:
+	get_tree().reload_current_scene()
