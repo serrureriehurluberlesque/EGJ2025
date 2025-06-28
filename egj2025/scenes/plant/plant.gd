@@ -1,14 +1,21 @@
 extends Area2D
 
+signal cutted(value)
+
 @export var is_legal := false
 @export var value := 100.0
 @export var full_growth := 100.0
 
-var growth := 0.0
-
 var SPRITE_HEIGHT = 96.0
 var LIMIT = 66.0
 var GOTTAGOFAST = 10.0  # 1.0 for true game
+var MAXCUTTAGE = 1.0
+
+var growth := 0.0
+var cuttage = 0.0
+var leaves_to_emit = 0.0
+var is_removing = false
+var removing = 0.0
 @onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, 66.0], $Step3: [66.0, 100.0], $Step4: [100.0, 150.0], $Step5: [150.0, 200.0]}
 
 
@@ -20,6 +27,17 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	grow(delta * GOTTAGOFAST)
+	if leaves_to_emit >= 0.0:
+		$Coupage.amount_ratio = 1.0
+		leaves_to_emit -= delta
+	else:
+		$Coupage.amount_ratio = 0.0
+	
+	if is_removing:
+		removing += delta * 3.0
+		modulate.a = 1.0 - removing
+		if removing >= 1.0:
+			queue_free()
 
 
 func grow(speed: float) -> void:
@@ -60,8 +78,21 @@ func is_interesting():
 	return growth >= LIMIT and growth < full_growth
 
 
-func get_cut() -> float:
-	if not is_legal and is_interesting():
-		return value
+func cut(delta):
+	cuttage += delta
+	leaves_to_emit += delta
+	
+	
+	if cuttage >= MAXCUTTAGE:
+		cutted.emit(get_value())
+		is_removing = true
+
+
+func get_value() -> float:
+	if is_interesting():
+		if is_legal:
+			return growth / 10.0
+		else:
+			return growth
 	else:
 		return 0.0
