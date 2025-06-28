@@ -21,6 +21,11 @@ const EARTH_TILES_ATLAS_COORDS = [
 	Vector2i(1,2),
 ]
 
+const EARTH_PLANTED_ATLAS_COORDS = [
+	Vector2i(2,1),
+	Vector2i(2,2),
+]
+
 const SEED_COST = 1
 const WAIT_COP= 20.0
 const RATIO_MAF = 0.3
@@ -44,7 +49,7 @@ func _input(event):
 		var map_coords = $Map.local_to_map(event.position)
 		
 		if (current_mode == Mode.PLANT_RED_MODE or current_mode == Mode.PLANT_BLUE_MODE) and can_plant(map_coords):
-			$Map.set_cell(map_coords, 2, Vector2i(2,1))
+			$Map.set_cell(map_coords, 2, EARTH_PLANTED_ATLAS_COORDS[randi() % EARTH_PLANTED_ATLAS_COORDS.size()])
 			var new_plant = plant_.instantiate()
 			new_plant.position = $Map.map_to_local(map_coords)
 			new_plant.z_index = map_coords[1]
@@ -89,7 +94,7 @@ func can_plant(map_coords: Vector2i):
 		
 func harvest_plant(price, coords):
 	plants.erase(coords)
-	$Map.set_cell(coords, 2, EARTH_TILES_ATLAS_COORDS[randi() % 4])
+	$Map.set_cell(coords, 2, EARTH_TILES_ATLAS_COORDS[randi() % EARTH_TILES_ATLAS_COORDS.size()])
 	self.moneyy += price
 	display_moneyy()
 
@@ -118,7 +123,7 @@ func grow_mode():
 	
 func select_button(button_pressed):
 	button_pressed.texture_normal = cageot_select
-	if selected_button:
+	if selected_button and selected_button != button_pressed:
 		selected_button.texture_normal = cageot
 	selected_button = button_pressed
 	
