@@ -18,7 +18,7 @@ region = Rect2(0, 214, 64, 128)
 [sub_resource type="CircleShape2D" id="CircleShape2D_gm68k"]
 
 [node name="Plant" type="Area2D"]
-monitoring = false
+collision_layer = 2
 script = ExtResource("1_gm68k")
 
 [node name="Step1" type="Sprite2D" parent="."]

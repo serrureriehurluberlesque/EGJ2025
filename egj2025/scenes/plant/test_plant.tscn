@@ -11,10 +11,25 @@ script = ExtResource("1_gb271")
 position = Vector2(160, 118)
 
 [node name="Plante2" parent="." instance=ExtResource("1_qeanf")]
-position = Vector2(212, 324)
+position = Vector2(411, 118)
 
 [node name="Plante3" parent="." instance=ExtResource("1_qeanf")]
-position = Vector2(494, 183)
+position = Vector2(1113, 115)
+
+[node name="Plante4" parent="." instance=ExtResource("1_qeanf")]
+position = Vector2(439, 448)
+is_legal = true
+
+[node name="Plante5" parent="." instance=ExtResource("1_qeanf")]
+position = Vector2(212, 454)
+is_legal = true
+
+[node name="Plante6" parent="." instance=ExtResource("1_qeanf")]
+position = Vector2(770, 436)
+is_legal = true
 
 [node name="Cop" parent="." instance=ExtResource("3_mp7bh")]
-position = Vector2(759, 273)
+position = Vector2(942, 111)
+
+[node name="Cop2" parent="." instance=ExtResource("3_mp7bh")]
+position = Vector2(942, 421)

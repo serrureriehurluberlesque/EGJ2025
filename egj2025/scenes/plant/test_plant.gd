@@ -5,7 +5,6 @@ func _ready() -> void:
 	$Plante2.grow(66.0)
 	await get_tree().create_timer(1).timeout
 	await get_tree().create_timer(1).timeout
-	print($Plante.saw_illegal())
 	await get_tree().create_timer(1).timeout
 	print($Plante.get_cut())
 	await get_tree().create_timer(1).timeout

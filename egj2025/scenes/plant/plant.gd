@@ -7,6 +7,7 @@ extends Area2D
 var growth := 0.0
 
 var SPRITE_HEIGHT = 128.0
+var LIMIT = 20.0
 var GOTTAGOFAST = 10.0  # 1.0 for true game
 @onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, 66.0], $Step3: [66.0, 100.0]}
 
@@ -16,12 +17,20 @@ func _ready() -> void:
 		s.texture = s.texture.duplicate()
 	update_sprites()
 
+
 func _process(delta: float) -> void:
 	grow(delta * GOTTAGOFAST)
 
 
 func grow(speed: float) -> void:
+	var interest = is_interesting()
+	
 	growth = min(max_growth, growth + speed)
+	
+	if interest != is_interesting():
+		for c in get_overlapping_areas():
+			c.regarde_attentivement(self)
+	
 	update_sprites()
 
 
@@ -35,7 +44,11 @@ func update_sprites():
 	
 	for s in sprites:
 		s.modulate.a = compute_growth_show(sprites[s])
-	
+
+
+func is_interesting():
+	return growth >= LIMIT
+
 
 func compute_growth_show(interval):
 	if interval[0] < growth and growth < interval[1]:
@@ -45,9 +58,6 @@ func compute_growth_show(interval):
 			return min(1, max(0, 1 - (interval[0] - growth) / 10.0))
 		else:
 			return min(1, max(0, 1 - (growth - interval[1]) / 10.0))
-
-func saw_illegal() -> bool:
-	return not is_legal and growth > 20.0
 
 
 func get_cut() -> float:
