@@ -38,6 +38,7 @@ var total_cop = 0
 var moneyy = 10
 var current_mode: Mode
 var selected_button: TextureButton
+var surbrillanced_tile_coords: Vector2i
 
 func _ready():
 	display_moneyy()
@@ -75,9 +76,10 @@ func _input(event):
 		grow_mode()
 
 func _physics_process(delta: float) -> void:
+	var mouse_position = get_viewport().get_mouse_position()
+	var map_coords = $Map.local_to_map(mouse_position)
+	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var mouse_position = get_viewport().get_mouse_position()
-		var map_coords = $Map.local_to_map(mouse_position)
 		if current_mode == Mode.CUT_MODE:
 			if map_coords in plants.keys():
 				plants[map_coords].cut(delta)
@@ -86,6 +88,18 @@ func _physics_process(delta: float) -> void:
 				plants[map_coords].grow(delta)
 			$Eau.set_position(mouse_position)
 			$Eau.arrose += delta
+			
+	if map_coords != surbrillanced_tile_coords:
+	#if map_coords in plants.keys() and map_coords != surbrillanced_tile_coords:
+		#var tile_data = $Map.get_cell_tile_data(map_coords)
+		#tile_data.set_modulate(Color(1.2, 1.2, 1.2, 1))
+		if map_coords in plants.keys():
+			plants[map_coords].start_highlight()
+
+		if surbrillanced_tile_coords and surbrillanced_tile_coords in plants.keys():
+			#$Map.get_cell_tile_data(surbrillanced_tile_coords).set_modulate(Color(1, 1, 1, 1))
+			plants[surbrillanced_tile_coords].stop_highlight()
+		surbrillanced_tile_coords = map_coords
 		
 func can_plant(map_coords: Vector2i):
 	return $Map.get_cell_atlas_coords(map_coords) in EARTH_TILES_ATLAS_COORDS \
