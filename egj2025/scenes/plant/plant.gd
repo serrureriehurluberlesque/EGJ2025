@@ -16,7 +16,7 @@ var cuttage = 0.0
 var leaves_to_emit = 0.0
 var is_removing = false
 var removing = 0.0
-@onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, 66.0], $Step3: [66.0, 100.0], $Step4: [100.0, 150.0], $Step5: [150.0, 200.0]}
+@onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, 66.0], $Step3: [66.0, 133.0], $Step4: [133.0, 170.0], $Step5: [170.0, 200.0]}
 
 
 func _ready() -> void:
