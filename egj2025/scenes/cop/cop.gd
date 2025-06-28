@@ -92,7 +92,7 @@ func compute_next_waypoint():
 			regarde(c)
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if walking:
 		walk(delta)
 	if leaving:

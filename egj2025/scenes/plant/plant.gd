@@ -9,7 +9,7 @@ signal cutted(value)
 var SPRITE_HEIGHT = 96.0
 var LIMITMIN = 66.0
 var LIMITMAX = 133.0
-var GOTTAGOFAST = 0.1  # 1.0 for true game
+var GOTTAGOFAST = 0.25  # 1.0 for true game
 var MAXCUTTAGE = 1.0
 
 var growth := 0.0
@@ -37,7 +37,7 @@ func _ready() -> void:
 	update_sprites()
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	grow(delta * GOTTAGOFAST, false)
 	if leaves_to_emit >= 0.0:
 		$Coupage.amount_ratio = 1.0
@@ -71,7 +71,7 @@ func grow(speed: float, fast=true) -> void:
 	
 	var interest = is_interesting()
 	
-	growth = min(2 * full_growth, growth + speed * 50.0)
+	growth = min(2 * full_growth, growth + speed * 15.0)
 	
 	if not interest and is_interesting():
 		$ProgressBar.show()
@@ -123,7 +123,7 @@ func cut(delta):
 func get_value() -> float:
 	if is_interesting():
 		if is_legal:
-			return growth / 10.0
+			return growth / 3.0
 		else:
 			return growth
 	else:

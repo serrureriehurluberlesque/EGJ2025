@@ -68,9 +68,9 @@ emission_sphere_radius = 12.0
 angle_min = 1.07288e-05
 angle_max = 360.0
 direction = Vector3(0, -1, 0)
-spread = 35.0
-initial_velocity_min = 80.0
-initial_velocity_max = 100.0
+spread = 55.0
+initial_velocity_min = 65.0
+initial_velocity_max = 80.0
 gravity = Vector3(0, 98, 0)
 damping_min = 10.0
 damping_max = 30.0
@@ -140,7 +140,7 @@ process_material = SubResource("ParticleProcessMaterial_gm68k")
 
 [node name="Arrosage" type="GPUParticles2D" parent="."]
 position = Vector2(0, -32)
-amount = 100
+amount = 25
 amount_ratio = 0.0
 texture = ExtResource("4_4t85h")
 process_material = SubResource("ParticleProcessMaterial_hf3g8")

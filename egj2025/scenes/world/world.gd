@@ -26,7 +26,7 @@ const EARTH_PLANTED_ATLAS_COORDS = [
 	Vector2i(2,2),
 ]
 
-const SEED_COST = 1
+const SEED_COST = 25.0
 const WAIT_COP= 20.0
 const RATIO_MAF = 0.3
 const RATIO_MEC = 0.0
@@ -35,7 +35,7 @@ enum Mode {PLANT_RED_MODE, PLANT_BLUE_MODE, CUT_MODE, GROW_MODE}
 
 var plants = {}
 var total_cop = 0
-var moneyy = 10
+var moneyy = 100.0
 var current_mode: Mode
 var selected_button: TextureButton
 var surbrillanced_tile_coords: Vector2i
@@ -157,12 +157,12 @@ func _on_cop_timer_timeout() -> void:
 		if (look_ilegal and not p.is_legal) or (not look_ilegal and p.is_legal):
 			n += 1
 	
-	n = max(1, n)
+	n = round(max(0.6 + total_cop / 2.0, n + total_cop / 2.0))
 	
 	new_cop.position = $CopSpawn.position
 	new_cop.to_be_seen = n
 	add_child(new_cop)
-	$CopTimer.wait_time = max(1.5, WAIT_COP * 0.9 ** total_cop * (0.75 + randf() / 2.0))
+	$CopTimer.wait_time = max(1.5, WAIT_COP * 0.95 ** total_cop * (0.75 + randf() / 2.0))
 	total_cop += 1
 	$CopTimer.start()
 	await get_tree().create_timer(4.5).timeout
