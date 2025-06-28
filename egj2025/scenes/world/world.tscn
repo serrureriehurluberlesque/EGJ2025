@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cone1vfjta5ci"]
+[gd_scene load_steps=19 format=4 uid="uid://cone1vfjta5ci"]
 
 [ext_resource type="Texture2D" uid="uid://cfeotk3njv6aq" path="res://scenes/world/assets/tileset.png" id="1_dphjl"]
 [ext_resource type="Script" uid="uid://byoreb471ajxb" path="res://scenes/world/world.gd" id="2_sl2e5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://i52esvoo3pg3" path="res://scenes/world/assets/secateur.png" id="7_1yooq"]
 [ext_resource type="Texture2D" uid="uid://coupf12j5urny" path="res://scenes/world/assets/arrosoir.png" id="8_gb53w"]
 [ext_resource type="PackedScene" uid="uid://cyklhmk04t4as" path="res://scenes/player/player.tscn" id="11_5qq27"]
+[ext_resource type="Texture2D" uid="uid://cnu35kl4m8284" path="res://scenes/cop/assets/policier_draft.png" id="12_dlabj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sl2e5"]
 texture = ExtResource("1_dphjl")
@@ -61,6 +62,8 @@ gravity = Vector3(0, 40, 0)
 damping_min = 10.0
 damping_max = 15.0
 color_ramp = SubResource("GradientTexture1D_v5dby")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_srmg5"]
 
 [node name="World" type="Control"]
 layout_mode = 3
@@ -297,8 +300,89 @@ position = Vector2(929, 886)
 
 [node name="Plants" type="Node2D" parent="."]
 
+[node name="GameOverPanel" type="TextureRect" parent="."]
+visible = false
+z_index = 50
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.467
+anchor_top = 0.438
+anchor_right = 0.467
+anchor_bottom = 0.438
+offset_left = -372.984
+offset_top = -293.166
+offset_right = 398.016
+offset_bottom = 275.834
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_srmg5")
+
+[node name="Gameover" type="Label" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -137.0
+offset_top = 57.0
+offset_right = 139.0
+offset_bottom = 126.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Game over!"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.5
+offset_top = -84.5
+offset_right = -153.5
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_dlabj")
+
+[node name="Label" type="Label" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.5
+offset_top = -75.5
+offset_right = 228.5
+offset_bottom = 53.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "Tu t'es fait attrapé par la police :'("
+autowrap_mode = 3
+
+[node name="Restart" type="Button" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.5
+offset_top = -157.0
+offset_right = 75.5
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Restart"
+
 [connection signal="timeout" from="CopTimer" to="." method="_on_cop_timer_timeout"]
 [connection signal="pressed" from="RackOutils/Buttons/PlantesBleues/PBButton" to="." method="plant_blue_mode"]
 [connection signal="pressed" from="RackOutils/Buttons/PlantesRouges/PRButton" to="." method="plant_red_mode"]
 [connection signal="pressed" from="RackOutils/Buttons/Cisors/CButton" to="." method="cut_mode"]
 [connection signal="pressed" from="RackOutils/Buttons/WateringCan/WCButton" to="." method="grow_mode"]
+[connection signal="pressed" from="GameOverPanel/Restart" to="." method="_on_restart_pressed"]
