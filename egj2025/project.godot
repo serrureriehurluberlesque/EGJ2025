@@ -15,6 +15,10 @@ run/main_scene="uid://cone1vfjta5ci"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_height=832
+
 [input]
 
 activate={
