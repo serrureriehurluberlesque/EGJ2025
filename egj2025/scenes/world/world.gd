@@ -79,8 +79,8 @@ func _physics_process(delta: float) -> void:
 		elif current_mode == Mode.GROW_MODE:
 			if map_coords in plants.keys():
 				plants[map_coords].grow(delta)
-				$Eau.set_position(mouse_position)
-				$Eau.arrose += delta
+			$Eau.set_position(mouse_position)
+			$Eau.arrose += delta
 		
 func can_plant(map_coords: Vector2i):
 	return $Map.get_cell_atlas_coords(map_coords) in EARTH_TILES_ATLAS_COORDS \
