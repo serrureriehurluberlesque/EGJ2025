@@ -111,8 +111,8 @@ func is_interesting():
 
 
 func cut(delta):
-	cuttage += delta
-	leaves_to_emit += delta
+	cuttage += delta * 2.0
+	leaves_to_emit += delta * 2.0
 	
 	
 	if cuttage >= MAXCUTTAGE:
@@ -123,9 +123,9 @@ func cut(delta):
 func get_value() -> float:
 	if is_interesting():
 		if is_legal:
-			return growth / 3.0
+			return growth / 3.5
 		else:
-			return growth
+			return growth / 2.0
 	else:
 		return 0.0
 

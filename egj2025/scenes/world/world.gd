@@ -27,7 +27,7 @@ const EARTH_PLANTED_ATLAS_COORDS = [
 ]
 
 const SEED_COST = 25.0
-const WAIT_COP= 20.0
+const WAIT_COP= 40.0
 const RATIO_MAF = 0.3
 const RATIO_MEC = 0.0
 
@@ -144,9 +144,10 @@ func select_button(button_pressed):
 func _on_cop_timer_timeout() -> void:
 	var look_ilegal = true
 	var new_cop
-	if randf() < RATIO_MEC:
+	
+	if total_cop <= 2 or total_cop > 3 and randf() < RATIO_MEC:
 		new_cop = mec_.instantiate()
-	elif randf() < RATIO_MAF:
+	elif total_cop == 3 or randf() < RATIO_MAF:
 		new_cop = maf_.instantiate()
 		look_ilegal = false
 	else:
@@ -162,7 +163,7 @@ func _on_cop_timer_timeout() -> void:
 	new_cop.position = $CopSpawn.position
 	new_cop.to_be_seen = n
 	add_child(new_cop)
-	$CopTimer.wait_time = max(1.5, WAIT_COP * 0.95 ** total_cop * (0.75 + randf() / 2.0))
+	$CopTimer.wait_time = max(1.5, WAIT_COP * 0.9 ** total_cop * (0.75 + randf() / 2.0))
 	total_cop += 1
 	$CopTimer.start()
 	await get_tree().create_timer(4.5).timeout
