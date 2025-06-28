@@ -17,7 +17,7 @@ var regarded = []
 var current_waypoint = Vector2(0, 0)
 var previous_waypoint = Vector2(0, 0)
 
-var ENTRY = Vector2(928.0, 352.0)
+var ENTRY = Vector2(992.0, 480.0)
 var DELTAX = 384.0
 var DELTAY = 256.0
 var SPEED = 35.0
