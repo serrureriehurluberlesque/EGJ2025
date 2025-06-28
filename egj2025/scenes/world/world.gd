@@ -40,6 +40,7 @@ var current_mode: Mode
 var selected_button: TextureButton
 var surbrillanced_tile_coords: Vector2i
 
+
 func _ready():
 	display_moneyy()
 	$CopTimer.start()
@@ -154,8 +155,11 @@ func _on_cop_timer_timeout() -> void:
 	for p in $Plants.get_children():
 		if (look_ilegal and not p.is_legal) or (not look_ilegal and p.is_legal):
 			n += 1
+			n *= 0.8
+			if not look_ilegal:
+				n *= 0.5
 	
-	n = round(max(0.6 + total_cop / 2.0, n + total_cop / 2.0))
+	n = round(max(0.6 + total_cop / 3.0, n + total_cop / 3.0))
 	
 	new_cop.position = $CopSpawn.position
 	new_cop.to_be_seen = n
