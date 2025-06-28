@@ -15,6 +15,7 @@ var MAXCUTTAGE = 1.0
 var growth := 0.0
 var cuttage = 0.0
 var leaves_to_emit = 0.0
+var terre_to_emit = 0.0
 var is_removing = false
 var removing = 0.0
 @onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, LIMITMIN], $Step3: [LIMITMIN, LIMITMAX], $Step4: [LIMITMAX, 170.0], $Step5: [170.0, 200.0]}
@@ -31,12 +32,18 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	grow(delta * GOTTAGOFAST)
+	grow(delta * GOTTAGOFAST, false)
 	if leaves_to_emit >= 0.0:
 		$Coupage.amount_ratio = 1.0
 		leaves_to_emit -= delta
 	else:
 		$Coupage.amount_ratio = 0.0
+	
+	if terre_to_emit >= 0.0:
+		$Arrosage.amount_ratio = 1.0
+		terre_to_emit -= delta
+	else:
+		$Arrosage.amount_ratio = 0.0
 	
 	if is_removing:
 		removing += delta * 3.0
@@ -45,7 +52,10 @@ func _process(delta: float) -> void:
 			queue_free()
 
 
-func grow(speed: float) -> void:
+func grow(speed: float, fast=true) -> void:
+	if fast:
+		terre_to_emit += speed
+	
 	var interest = is_interesting()
 	
 	growth = min(2 * full_growth, growth + speed * 50.0)
