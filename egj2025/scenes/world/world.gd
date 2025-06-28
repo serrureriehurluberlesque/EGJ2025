@@ -7,7 +7,7 @@ var mec_ = preload("res://scenes/cop/mec.tscn")
 
 var graines_rouges = load("res://scenes/world/assets/sacgrainesrouge_small.png")
 var graines_bleues = load("res://scenes/world/assets/sacgrainesbleu_small.png")
-var secateur = load("res://scenes/world/assets/secateur.png")
+var secateur = load("res://scenes/world/assets/secateur_small.png")
 var arrosoir = load("res://scenes/world/assets/arrosoir_small.png")
 
 var cageot = load("res://scenes/world/assets/cageot.png")

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c7d4ge0w1f8mi"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 610.0
+offset_bottom = 736.0
+
+[node name="Title" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -57.0
+offset_right = 57.0
+offset_bottom = 51.0
+grow_horizontal = 2
+text = "MENU"
+horizontal_alignment = 1
