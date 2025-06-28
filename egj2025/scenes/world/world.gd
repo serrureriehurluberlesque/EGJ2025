@@ -2,6 +2,7 @@ extends Node2D
 
 var plant_ = preload("res://scenes/plant/plant.tscn")
 var cop_ = preload("res://scenes/cop/cop.tscn")
+var secateur = load("res://scenes/world/assets/secateur.png")
 
 const EARTH_TILES_ATLAS_COORDS = [
 	Vector2i(0,1),
@@ -46,11 +47,9 @@ func _input(event):
 			display_moneyy()
 
 	elif event.is_action_pressed("cut_mode"):
-		current_mode = Mode.CUT_MODE
-		display_mode()
+		cut_mode()
 	elif event.is_action_pressed("plant_mode"):
-		current_mode = Mode.PLANT_MODE
-		display_mode()
+		plant_mode()
 
 func _physics_process(delta: float) -> void:
 	if current_mode == Mode.CUT_MODE and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -76,10 +75,18 @@ func display_moneyy():
 func display_mode():
 	$ModeLabel.text = "Mode: %s" % mode_strs[current_mode]
 
+func cut_mode():
+	current_mode = Mode.CUT_MODE
+	display_mode()
+	Input.set_custom_mouse_cursor(secateur)
+	
+func plant_mode():
+	current_mode = Mode.PLANT_MODE
+	display_mode()
+	Input.set_custom_mouse_cursor(null)
 
 func _on_cop_timer_timeout() -> void:
 	var new_cop = cop_.instantiate()
+	new_cop.position = $CopSpawn.position
 	add_child(new_cop)
-	
 	$CopTimer.start()
-	

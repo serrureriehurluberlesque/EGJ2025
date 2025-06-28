@@ -56,6 +56,6 @@ tile_set = SubResource("TileSet_1fp7r")
 wait_time = 10.0
 
 [node name="CopSpawn" type="Node2D" parent="."]
-position = Vector2(1099, 217)
+position = Vector2(1321, 420)
 
 [connection signal="timeout" from="CopTimer" to="." method="_on_cop_timer_timeout"]
