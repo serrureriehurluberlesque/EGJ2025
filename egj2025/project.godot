@@ -13,7 +13,7 @@ config_version=5
 config/name="EGJ2025"
 run/main_scene="uid://cone1vfjta5ci"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="/home/hugo/Repos/EGJ2025/raw_assets/arrosoir.png"
 
 [display]
 
