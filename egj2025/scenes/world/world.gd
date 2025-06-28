@@ -1,6 +1,7 @@
 extends Node2D
 
 var plant_ = preload("res://scenes/plant/plant.tscn")
+var cop_ = preload("res://scenes/cop/cop.tscn")
 
 const EARTH_TILES_ATLAS_COORDS = [
 	Vector2i(0,1),
@@ -25,6 +26,7 @@ var current_mode = Mode.PLANT_MODE
 func _ready():
 	display_moneyy()
 	display_mode()
+	$CopTimer.start()
 
 func _input(event):
 	if event.is_action_pressed("activate"):
@@ -64,6 +66,7 @@ func can_plant(map_coords: Vector2i):
 		
 func harvest_plant(price, coords):
 	plants.erase(coords)
+	$Map.set_cell(coords, 2, EARTH_TILES_ATLAS_COORDS[randi() % 4])
 	self.moneyy += price
 	display_moneyy()
 
@@ -72,3 +75,11 @@ func display_moneyy():
 
 func display_mode():
 	$ModeLabel.text = "Mode: %s" % mode_strs[current_mode]
+
+
+func _on_cop_timer_timeout() -> void:
+	var new_cop = cop_.instantiate()
+	add_child(new_cop)
+	
+	$CopTimer.start()
+	
