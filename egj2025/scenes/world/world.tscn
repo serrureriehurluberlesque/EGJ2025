@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://cone1vfjta5ci"]
+[gd_scene load_steps=10 format=4 uid="uid://cone1vfjta5ci"]
 
 [ext_resource type="Texture2D" uid="uid://cfeotk3njv6aq" path="res://scenes/world/assets/tileset.png" id="1_dphjl"]
 [ext_resource type="Script" uid="uid://byoreb471ajxb" path="res://scenes/world/world.gd" id="2_sl2e5"]
+[ext_resource type="Script" uid="uid://mdwi4esf8lgp" path="res://scenes/world/eau.gd" id="3_1fp7r"]
+[ext_resource type="Texture2D" uid="uid://c6o60tjqbe5jw" path="res://scenes/world/assets/goutte.png" id="3_6m72w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sl2e5"]
 texture = ExtResource("1_dphjl")
@@ -31,6 +33,28 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/2 = SubResource("TileSetAtlasSource_sl2e5")
 
+[sub_resource type="Gradient" id="Gradient_6m72w"]
+offsets = PackedFloat32Array(0, 0.258065, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.227451, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v5dby"]
+gradient = SubResource("Gradient_6m72w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6m72w"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -92, 0)
+emission_shape = 1
+emission_sphere_radius = 32.0
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 60.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 40, 0)
+damping_min = 10.0
+damping_max = 15.0
+color_ramp = SubResource("GradientTexture1D_v5dby")
+
 [node name="World" type="Node2D"]
 script = ExtResource("2_sl2e5")
 
@@ -57,5 +81,13 @@ offset_left = 985.0
 offset_top = 78.0
 offset_right = 1143.0
 offset_bottom = 133.0
+
+[node name="Eau" type="GPUParticles2D" parent="."]
+z_index = 20
+amount = 100
+amount_ratio = 0.0
+texture = ExtResource("3_6m72w")
+process_material = SubResource("ParticleProcessMaterial_6m72w")
+script = ExtResource("3_1fp7r")
 
 [connection signal="timeout" from="CopTimer" to="." method="_on_cop_timer_timeout"]
