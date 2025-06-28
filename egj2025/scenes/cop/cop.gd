@@ -85,7 +85,7 @@ func compute_next_waypoint():
 	elif not talking:
 		$Bulle.update_text("%d%s!!" % [to_be_seen, "[img]res://scenes/Bulle/assets/bleu.png[/img]" if is_maf else "[img]res://scenes/Bulle/assets/rouge.png[/img]"])
 		talking = true
-		await get_tree().create_timer(6).timeout
+		await get_tree().create_timer(8).timeout
 		inited = true
 		update_bulle()
 		for c in get_overlapping_areas():
@@ -107,9 +107,8 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func regarde(area):
-	if inited:
-		if area.is_interesting():
-			regarde_attentivement(area)
+	if area.is_interesting():
+		regarde_attentivement(area)
 
 
 func check_legal(is_legal):
@@ -117,18 +116,19 @@ func check_legal(is_legal):
 
 
 func regarde_attentivement(area):
-	if not area in regarded:
-		var ok = is_ok()
-		if check_legal(area.is_legal):
-			to_be_seen -= 1
-			regarded.append(area)
-		else:
-			bust.emit()
-		
-		if ok != is_ok():
-			walking = false
-			leaving = true
-		update_bulle()
+	if inited:
+		if not area in regarded:
+			var ok = is_ok()
+			if check_legal(area.is_legal):
+				to_be_seen -= 1
+				regarded.append(area)
+			else:
+				bust.emit()
+			
+			if ok != is_ok():
+				walking = false
+				leaving = true
+			update_bulle()
 
 
 func buste():
