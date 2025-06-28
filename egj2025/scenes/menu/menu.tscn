@@ -43,6 +43,7 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 
 [node name="CloseButton" type="Button" parent="Background"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

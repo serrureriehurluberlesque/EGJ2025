@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://coupf12j5urny" path="res://scenes/world/assets/arrosoir.png" id="8_gb53w"]
 [ext_resource type="PackedScene" uid="uid://cyklhmk04t4as" path="res://scenes/player/player.tscn" id="11_5qq27"]
 [ext_resource type="Texture2D" uid="uid://cnu35kl4m8284" path="res://scenes/cop/assets/policier_draft.png" id="12_dlabj"]
-[ext_resource type="PackedScene" path="res://scenes/menu/menu.tscn" id="12_srmg5"]
+[ext_resource type="PackedScene" uid="uid://c76l4erpwru8m" path="res://scenes/menu/menu.tscn" id="12_srmg5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sl2e5"]
 texture = ExtResource("1_dphjl")
@@ -371,6 +371,7 @@ text = "Aide"
 
 [node name="Menu" parent="." instance=ExtResource("12_srmg5")]
 visible = false
+z_index = 100
 position = Vector2(313, 190)
 
 [node name="GameOverPanel" type="TextureRect" parent="."]
