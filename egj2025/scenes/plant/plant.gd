@@ -76,7 +76,6 @@ func grow(speed: float, fast=true) -> void:
 	if not interest and is_interesting():
 		$ProgressBar.show()
 		for c in get_overlapping_areas():
-			print("plant called")
 			c.regarde_attentivement(self)
 	elif interest and not is_interesting():
 		$ProgressBar.hide()

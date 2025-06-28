@@ -109,7 +109,6 @@ func _on_area_entered(area: Area2D) -> void:
 func regarde(area):
 	if inited:
 		if area.is_interesting():
-			print("self called")
 			regarde_attentivement(area)
 
 
