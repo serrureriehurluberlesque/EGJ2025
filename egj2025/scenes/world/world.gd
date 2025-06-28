@@ -1,12 +1,17 @@
-extends Node2D
+extends Control
 
 var plant_ = preload("res://scenes/plant/plant.tscn")
 var cop_ = preload("res://scenes/cop/cop.tscn")
+var maf_ = preload("res://scenes/cop/maf.tscn")
+var mec_ = preload("res://scenes/cop/mec.tscn")
 
-var graines_rouges = load("res://scenes/world/assets/sacgrainesrouge.png")
-var graines_bleues = load("res://scenes/world/assets/sacgrainesbleu.png")
+var graines_rouges = load("res://scenes/world/assets/sacgrainesrouge_small.png")
+var graines_bleues = load("res://scenes/world/assets/sacgrainesbleu_small.png")
 var secateur = load("res://scenes/world/assets/secateur.png")
-var arrosoir = load("res://scenes/world/assets/arrosoir.png")
+var arrosoir = load("res://scenes/world/assets/arrosoir_small.png")
+
+var cageot = load("res://scenes/world/assets/cageot.png")
+var cageot_select = load("res://scenes/world/assets/cageot_select.png")
 
 
 const EARTH_TILES_ATLAS_COORDS = [
@@ -17,23 +22,20 @@ const EARTH_TILES_ATLAS_COORDS = [
 ]
 
 const SEED_COST = 1
+const WAIT_COP= 20.0
+const RATIO_MAF = 0.3
+const RATIO_MEC = 0.1
 
 enum Mode {PLANT_RED_MODE, PLANT_BLUE_MODE, CUT_MODE, GROW_MODE}
 
-const mode_strs = {
-	Mode.PLANT_BLUE_MODE: "PLANTER BLEU",
-	Mode.PLANT_RED_MODE: "PLANTER ROUGE",
-	Mode.CUT_MODE: "COUPER",
-	Mode.GROW_MODE: "ARROSER",
-}
-
 var plants = {}
+var total_cop = 0
 var moneyy = 10
 var current_mode: Mode
+var selected_button: TextureButton
 
 func _ready():
 	display_moneyy()
-	display_mode()
 	$CopTimer.start()
 	plant_blue_mode()
 
@@ -77,8 +79,8 @@ func _physics_process(delta: float) -> void:
 		elif current_mode == Mode.GROW_MODE:
 			if map_coords in plants.keys():
 				plants[map_coords].grow(delta)
-				$Eau.set_position(mouse_position)
-				$Eau.arrose += delta
+			$Eau.set_position(mouse_position)
+			$Eau.arrose += delta
 		
 func can_plant(map_coords: Vector2i):
 	return $Map.get_cell_atlas_coords(map_coords) in EARTH_TILES_ATLAS_COORDS \
@@ -94,31 +96,47 @@ func harvest_plant(price, coords):
 func display_moneyy():
 	$MoneyyLabel.text = "Money: %d$" % moneyy
 
-func display_mode():
-	$ModeLabel.text = "Mode: %s" % mode_strs[current_mode]
-
-func cut_mode():
-	current_mode = Mode.CUT_MODE
-	display_mode()
-	Input.set_custom_mouse_cursor(secateur)
-	
 func plant_blue_mode():
 	current_mode = Mode.PLANT_BLUE_MODE
-	display_mode()
 	Input.set_custom_mouse_cursor(graines_bleues)
+	select_button(%PBButton)
 	
 func plant_red_mode():
 	current_mode = Mode.PLANT_RED_MODE
-	display_mode()
 	Input.set_custom_mouse_cursor(graines_rouges)
+	select_button(%PRButton)
+	
+func cut_mode():
+	current_mode = Mode.CUT_MODE
+	Input.set_custom_mouse_cursor(secateur)
+	select_button(%CButton)
 	
 func grow_mode():
 	current_mode = Mode.GROW_MODE
-	display_mode()
 	Input.set_custom_mouse_cursor(arrosoir)
-
+	select_button(%WCButton)
+	
+func select_button(button_pressed):
+	button_pressed.texture_normal = cageot_select
+	if selected_button:
+		selected_button.texture_normal = cageot
+	selected_button = button_pressed
+	
 func _on_cop_timer_timeout() -> void:
-	var new_cop = cop_.instantiate()
+	var n = 3  # number of plants to be get
+	var new_cop
+	if randf() < RATIO_MEC:
+		new_cop = mec_.instantiate()
+	elif randf() < RATIO_MAF:
+		new_cop = maf_.instantiate()
+	else:
+		new_cop = cop_.instantiate()
+	
 	new_cop.position = $CopSpawn.position
+	new_cop.to_be_seen = n
 	add_child(new_cop)
+	$CopTimer.wait_time = WAIT_COP * 0.9 ** total_cop * (0.75 + randf() / 2.0) 
+	total_cop += 1
 	$CopTimer.start()
+	await get_tree().create_timer(4.5).timeout
+	$Player.start_talking(n)

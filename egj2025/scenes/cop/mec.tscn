@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjgedsup0fpxp"]
+
+[ext_resource type="PackedScene" uid="uid://cxb35anmito8y" path="res://scenes/cop/cop.tscn" id="1_gn0w1"]
+
+[node name="Mec" instance=ExtResource("1_gn0w1")]

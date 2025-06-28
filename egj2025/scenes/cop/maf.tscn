@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://de06ku1jejyw8"]
+
+[ext_resource type="PackedScene" uid="uid://cxb35anmito8y" path="res://scenes/cop/cop.tscn" id="1_5yxjk"]
+
+[node name="Maf" instance=ExtResource("1_5yxjk")]
