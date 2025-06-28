@@ -117,7 +117,11 @@ func select_button(button_pressed):
 	selected_button = button_pressed
 	
 func _on_cop_timer_timeout() -> void:
+	var n = 3  # number of plants to be get
 	var new_cop = cop_.instantiate()
 	new_cop.position = $CopSpawn.position
+	new_cop.to_be_seen = n
 	add_child(new_cop)
 	$CopTimer.start()
+	await get_tree().create_timer(4.5).timeout
+	$Player.start_talking(n)
