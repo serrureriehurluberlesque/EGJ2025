@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 		$Pognon.amount_ratio = 0.0
 	
 	if is_removing:
-		removing += delta * 1.5
+		removing += delta * 0.5
 		modulate.a = 1.0 - removing
 		if removing >= 1.0:
 			queue_free()
