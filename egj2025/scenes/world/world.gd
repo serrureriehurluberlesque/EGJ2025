@@ -40,13 +40,14 @@ var displayed_moneyy = 100.0
 var current_mode: Mode
 var selected_button: TextureButton
 var surbrillanced_tile_coords: Vector2i
-
+var current_cursor: Texture2D
 
 func _ready():
 	display_moneyy()
 	$CopTimer.start()
 	plant_blue_mode()
 	$Map.get_cell_tile_data(Vector2i(0,0)).z_index = 10
+	open_menu()
 
 func _input(event):
 	if event.is_action_pressed("plant_blue_mode"):
@@ -117,25 +118,39 @@ func display_moneyy():
 		$AnimationPlayer.play("cash")
 	$MoneyyLabel.text = "Money: %d$" % moneyy
 	displayed_moneyy = moneyy
+	
+func open_menu():
+	Input.set_custom_mouse_cursor(null)
+	set_pause_subtree(self, true)
+	$Menu.show()
+	
+func close_menu():
+	Input.set_custom_mouse_cursor(current_cursor)
+	set_pause_subtree(self, false)
+	$Menu.hide()
 
 func plant_blue_mode():
 	current_mode = Mode.PLANT_BLUE_MODE
 	Input.set_custom_mouse_cursor(graines_bleues)
+	current_cursor = graines_bleues
 	select_button(%PBButton)
 	
 func plant_red_mode():
 	current_mode = Mode.PLANT_RED_MODE
 	Input.set_custom_mouse_cursor(graines_rouges)
+	current_cursor = graines_rouges
 	select_button(%PRButton)
 	
 func cut_mode():
 	current_mode = Mode.CUT_MODE
 	Input.set_custom_mouse_cursor(secateur)
+	current_cursor = secateur
 	select_button(%CButton)
 	
 func grow_mode():
 	current_mode = Mode.GROW_MODE
 	Input.set_custom_mouse_cursor(arrosoir, 0, Vector2(0, 58))
+	current_cursor = arrosoir
 	select_button(%WCButton)
 	
 func select_button(button_pressed):
