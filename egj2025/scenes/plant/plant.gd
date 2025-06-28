@@ -7,7 +7,8 @@ signal cutted(value)
 @export var full_growth := 100.0
 
 var SPRITE_HEIGHT = 96.0
-var LIMIT = 66.0
+var LIMITMIN = 66.0
+var LIMITMAX = 133.0
 var GOTTAGOFAST = 10.0  # 1.0 for true game
 var MAXCUTTAGE = 1.0
 
@@ -16,7 +17,7 @@ var cuttage = 0.0
 var leaves_to_emit = 0.0
 var is_removing = false
 var removing = 0.0
-@onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, 66.0], $Step3: [66.0, 133.0], $Step4: [133.0, 170.0], $Step5: [170.0, 200.0]}
+@onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, LIMITMIN], $Step3: [LIMITMIN, LIMITMAX], $Step4: [LIMITMAX, 170.0], $Step5: [170.0, 200.0]}
 
 
 func _ready() -> void:
@@ -79,7 +80,7 @@ func compute_growth_show(interval):
 
 
 func is_interesting():
-	return growth >= LIMIT and growth < full_growth
+	return growth >= LIMITMIN and growth < LIMITMAX
 
 
 func cut(delta):
