@@ -105,6 +105,7 @@ func regarde_attentivement(area):
 		
 		if ok != is_ok():
 			walking = false
+			leaving = true
 		update_bulle()
 
 
