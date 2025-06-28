@@ -2,14 +2,14 @@ extends Area2D
 
 @export var is_legal := false
 @export var value := 100.0
-@export var max_growth := 100.0
+@export var full_growth := 100.0
 
 var growth := 0.0
 
 var SPRITE_HEIGHT = 128.0
-var LIMIT = 20.0
+var LIMIT = 66.0
 var GOTTAGOFAST = 10.0  # 1.0 for true game
-@onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, 66.0], $Step3: [66.0, 100.0]}
+@onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, 66.0], $Step3: [66.0, 100.0], $Step4: [100.0, 150.0], $Step5: [150.0, 200.0]}
 
 
 func _ready() -> void:
@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 func grow(speed: float) -> void:
 	var interest = is_interesting()
 	
-	growth = min(max_growth, growth + speed)
+	growth = min(2 * full_growth, growth + speed)
 	
 	if interest != is_interesting():
 		for c in get_overlapping_areas():
@@ -46,10 +46,6 @@ func update_sprites():
 		s.modulate.a = compute_growth_show(sprites[s])
 
 
-func is_interesting():
-	return growth >= LIMIT
-
-
 func compute_growth_show(interval):
 	if interval[0] < growth and growth < interval[1]:
 		return 1.0
@@ -60,8 +56,12 @@ func compute_growth_show(interval):
 			return min(1, max(0, 1 - (growth - interval[1]) / 10.0))
 
 
+func is_interesting():
+	return growth >= LIMIT and growth < full_growth
+
+
 func get_cut() -> float:
-	if not is_legal and growth == max_growth:
+	if not is_legal and is_interesting():
 		return value
 	else:
 		return 0.0

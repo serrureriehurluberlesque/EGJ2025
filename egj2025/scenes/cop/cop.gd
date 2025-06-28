@@ -15,7 +15,7 @@ func _ready():
 
 func _process(delta: float) -> void:
 	var p = get_position()
-	p.x += delta * -100.0 * v
+	p.x += delta * -25.0 * v
 	set_position(p)
 
 
@@ -50,7 +50,7 @@ func is_ok():
 
 func update_bulle():
 	if busted:
-		$Bulle.update_text("Busted!")
+		$Bulle.update_text("Il n'y avait pas de malentendu, chenapan!")
 	elif is_ok():
 		$Bulle.update_text("Is ok!")
 	else:
