@@ -59,7 +59,7 @@ func _input(event):
 			if current_mode == Mode.PLANT_BLUE_MODE:
 				new_plant.is_legal = true
 				
-			add_child(new_plant)
+			$Plants.add_child(new_plant)
 			plants[map_coords] = new_plant
 			
 			# Update moneyy
@@ -142,14 +142,22 @@ func select_button(button_pressed):
 	selected_button = button_pressed
 	
 func _on_cop_timer_timeout() -> void:
-	var n = 3  # number of plants to be get
+	var look_ilegal = true
 	var new_cop
 	if randf() < RATIO_MEC:
 		new_cop = mec_.instantiate()
 	elif randf() < RATIO_MAF:
 		new_cop = maf_.instantiate()
+		look_ilegal = false
 	else:
 		new_cop = cop_.instantiate()
+	
+	var n = 0
+	for p in $Plants.get_children():
+		if (look_ilegal and not p.is_legal) or (not look_ilegal and p.is_legal):
+			n += 1
+	
+	n = max(1, n)
 	
 	new_cop.position = $CopSpawn.position
 	new_cop.to_be_seen = n

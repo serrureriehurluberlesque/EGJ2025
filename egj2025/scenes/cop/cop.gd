@@ -12,12 +12,15 @@ var walking = true
 var leaving = false
 var left = 0.0
 var inited = false
+var talking = false
+var regarded = []
 var current_waypoint = Vector2(0, 0)
+var previous_waypoint = Vector2(0, 0)
 
 var ENTRY = Vector2(928.0, 352.0)
 var DELTAX = 384.0
 var DELTAY = 256.0
-var SPEED = 125.0
+var SPEED = 55.0
 
 var waypoints = {
 	Vector2(0, 0): Vector2(),
@@ -63,7 +66,7 @@ func is_ok_waypoint(next_waypoint):
 	for w in waypoints:
 		if egalish(w, next_waypoint):
 			is_in_waypoints = true
-	return is_in_waypoints and not egalish(current_waypoint, next_waypoint)
+	return is_in_waypoints and not egalish(current_waypoint, next_waypoint) and not egalish(previous_waypoint, next_waypoint)
 
 
 func get_nearest_waypoint(next_waypoint):
@@ -77,9 +80,11 @@ func compute_next_waypoint():
 		var next_waypoint = Vector2(-99, -99)
 		while not is_ok_waypoint(next_waypoint):
 			next_waypoint = current_waypoint + Vector2(1.0, 0).rotated(PI/2 * (randi() % 4))
+		previous_waypoint = current_waypoint
 		current_waypoint = get_nearest_waypoint(next_waypoint)
-	else:
+	elif not talking:
 		$Bulle.update_text("%d🌿?!" % [to_be_seen])
+		talking = true
 		await get_tree().create_timer(6).timeout
 		inited = true
 		update_bulle()
@@ -104,6 +109,7 @@ func _on_area_entered(area: Area2D) -> void:
 func regarde(area):
 	if inited:
 		if area.is_interesting():
+			print("self called")
 			regarde_attentivement(area)
 
 
@@ -112,9 +118,11 @@ func check_legal(is_legal):
 
 
 func regarde_attentivement(area):
+	if not area in regarded:
 		var ok = is_ok()
 		if check_legal(area.is_legal):
 			to_be_seen -= 1
+			regarded.append(area)
 		else:
 			bust.emit()
 		

@@ -71,8 +71,9 @@ func grow(speed: float, fast=true) -> void:
 	
 	growth = min(2 * full_growth, growth + speed * 50.0)
 	
-	if interest != is_interesting():
+	if not interest and is_interesting():
 		for c in get_overlapping_areas():
+			print("plant called")
 			c.regarde_attentivement(self)
 	
 	update_sprites()
