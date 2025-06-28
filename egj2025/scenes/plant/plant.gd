@@ -83,7 +83,7 @@ func update_sprites():
 		var h = min(SPRITE_HEIGHT, max(1, round(SPRITE_HEIGHT * growth / 100.0)))
 		r.size = Vector2(r.size.x, h)
 		s.texture.region = r
-		s.position = Vector2(0, -h / 2)
+		s.position = Vector2(0, -h / 2 + 8)
 	
 	for s in sprites:
 		s.modulate.a = compute_growth_show(sprites[s])
