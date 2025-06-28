@@ -6,7 +6,7 @@ extends Area2D
 
 var growth := 0.0
 
-var SPRITE_HEIGHT = 128.0
+var SPRITE_HEIGHT = 96.0
 var LIMIT = 66.0
 var GOTTAGOFAST = 10.0  # 1.0 for true game
 @onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, 66.0], $Step3: [66.0, 100.0], $Step4: [100.0, 150.0], $Step5: [150.0, 200.0]}

@@ -13,7 +13,7 @@ region = Rect2(64, 220, 64, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85esa"]
 atlas = ExtResource("3_85esa")
-region = Rect2(0, 214, 64, 128)
+region = Rect2(0, 214, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hf3g8"]
 atlas = ExtResource("3_85esa")
