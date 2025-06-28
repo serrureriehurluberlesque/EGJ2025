@@ -8,4 +8,4 @@ func _ready() -> void:
 
 func update_text(t):
 	show()
-	$ColorRect/Label.text = t
+	$Label.text = t

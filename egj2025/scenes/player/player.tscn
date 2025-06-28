@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://cyklhmk04t4as"]
 
 [ext_resource type="Script" uid="uid://btg0ho0i74hdd" path="res://scenes/player/player.gd" id="1_dovo2"]
-[ext_resource type="Texture2D" uid="uid://ckdedyt27u0fk" path="res://scenes/player/assets/personnage_draft.png" id="2_dovo2"]
+[ext_resource type="Texture2D" uid="uid://bwgetsenfmlt1" path="res://scenes/player/assets/main_assis.png" id="2_gmlin"]
 [ext_resource type="PackedScene" uid="uid://nga8pa818l3t" path="res://scenes/Bulle/bulle.tscn" id="3_gmlin"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_dovo2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_dovo2")
+texture = ExtResource("2_gmlin")
 
 [node name="Bulle" parent="." instance=ExtResource("3_gmlin")]

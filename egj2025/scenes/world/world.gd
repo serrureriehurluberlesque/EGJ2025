@@ -40,10 +40,12 @@ var current_mode: Mode
 var selected_button: TextureButton
 var surbrillanced_tile_coords: Vector2i
 
+
 func _ready():
 	display_moneyy()
 	$CopTimer.start()
 	plant_blue_mode()
+	$Map.get_cell_tile_data(Vector2i(0,0)).z_index = 10
 
 func _input(event):
 	if event.is_action_pressed("plant_blue_mode"):
@@ -129,7 +131,7 @@ func cut_mode():
 	
 func grow_mode():
 	current_mode = Mode.GROW_MODE
-	Input.set_custom_mouse_cursor(arrosoir)
+	Input.set_custom_mouse_cursor(arrosoir, 0, Vector2(0, 58))
 	select_button(%WCButton)
 	
 func select_button(button_pressed):
@@ -154,8 +156,11 @@ func _on_cop_timer_timeout() -> void:
 	for p in $Plants.get_children():
 		if (look_ilegal and not p.is_legal) or (not look_ilegal and p.is_legal):
 			n += 1
+			n *= 0.8
+			if not look_ilegal:
+				n *= 0.5
 	
-	n = round(max(0.6 + total_cop / 2.0, n + total_cop / 2.0))
+	n = round(max(0.6 + total_cop / 3.0, n + total_cop / 3.0))
 	
 	new_cop.position = $CopSpawn.position
 	new_cop.to_be_seen = n
@@ -170,7 +175,20 @@ func _on_cop_timer_timeout() -> void:
 func show_game_over() -> void:
 	await get_tree().create_timer(3).timeout
 	# TODO pause game
+	set_pause_subtree(self, true)
+	Input.set_custom_mouse_cursor(null)
 	$GameOverPanel.show()
 
 func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()
+	
+func set_pause_subtree(root: Node, pause: bool) -> void:
+	var process_setters = ["set_process",
+	"set_physics_process",
+	"set_process_input",
+	"set_process_unhandled_input",
+	"set_process_unhandled_key_input",
+	"set_process_shortcut_input",]
+	
+	for setter in process_setters:
+		root.propagate_call(setter, [!pause])

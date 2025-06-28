@@ -14,8 +14,9 @@ var MAXCUTTAGE = 1.0
 
 var growth := 0.0
 var cuttage = 0.0
+var pognonage = 0.0
 var leaves_to_emit = 0.0
-var terre_to_emit = 0.0
+var terre_to_emit = 0.1
 var is_removing = false
 var removing = 0.0
 @onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, LIMITMIN], $Step3: [LIMITMIN, LIMITMAX], $Step4: [LIMITMAX, 150.0], $Step5: [150.0, 170.0], $Step6: [170.0, 200.0]}
@@ -33,26 +34,33 @@ func _ready() -> void:
 	if is_legal:
 		$Interessant.modulate.r = 0.0
 	else:
+		GOTTAGOFAST *= 0.7
 		$Interessant.modulate.b = 0.0
 	update_sprites()
 
 
 func _physics_process(delta: float) -> void:
 	grow(delta * GOTTAGOFAST, false)
-	if leaves_to_emit >= 0.0:
+	if leaves_to_emit > 0.0:
 		$Coupage.amount_ratio = 1.0
 		leaves_to_emit -= delta
 	else:
 		$Coupage.amount_ratio = 0.0
 	
-	if terre_to_emit >= 0.0:
+	if terre_to_emit > 0.0:
 		$Arrosage.amount_ratio = 1.0
 		terre_to_emit -= delta
 	else:
 		$Arrosage.amount_ratio = 0.0
 	
+	if pognonage > 0.0:
+		$Pognon.amount_ratio = 1.0
+		pognonage -= delta
+	else:
+		$Pognon.amount_ratio = 0.0
+	
 	if is_removing:
-		removing += delta * 3.0
+		removing += delta * 1.5
 		modulate.a = 1.0 - removing
 		if removing >= 1.0:
 			queue_free()
@@ -66,7 +74,7 @@ func _physics_process(delta: float) -> void:
 
 
 func grow(speed: float, fast=true) -> void:
-	if fast:
+	if fast and growth < full_growth:
 		terre_to_emit += speed
 	
 	var interest = is_interesting()
@@ -110,19 +118,27 @@ func is_interesting():
 
 
 func cut(delta):
-	cuttage += delta * 3.0
-	leaves_to_emit += delta * 3.0
+	cuttage += delta * 5.0
+	leaves_to_emit += delta * 5.0
 	
 	
 	if cuttage >= MAXCUTTAGE:
 		cutted.emit(get_value())
+		pognonage += get_value() / 50.0
+		var d = Vector2(566, 0) - get_position()
+		var v = d.length() * 1.5
+		d = d.normalized()
+		$Pognon.process_material.direction = Vector3(d.x, d.y, 0)
+		$Pognon.process_material.initial_velocity_min = v
+		$Pognon.process_material.initial_velocity_max = v
+
 		is_removing = true
 
 
 func get_value() -> float:
 	if is_interesting():
 		if is_legal:
-			return growth / 3.5
+			return 0  # growth / 3.5
 		else:
 			return growth / 2.0
 	else:
