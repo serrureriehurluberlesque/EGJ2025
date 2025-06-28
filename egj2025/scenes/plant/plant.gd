@@ -139,7 +139,7 @@ func cut(delta):
 func get_value() -> float:
 	if is_interesting():
 		if is_legal:
-			return VALUE_MORNE_ET_NULLE / 5.0
+			return 0
 		else:
 			return VALUE_MORNE_ET_NULLE
 	else:

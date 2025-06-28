@@ -83,7 +83,7 @@ func compute_next_waypoint():
 		previous_waypoint = current_waypoint
 		current_waypoint = get_nearest_waypoint(next_waypoint)
 	elif not talking:
-		$Bulle.update_text("%d%s!!" % [to_be_seen, "[img]res://scenes/Bulle/assets/bleu.png[/img]" if is_maf else "[img]res://scenes/Bulle/assets/rouge.png[/img]"])
+		$Bulle.update_text(" %d%s!! " % [to_be_seen, "[img]res://scenes/Bulle/assets/bleu.png[/img]" if is_maf else "[img]res://scenes/Bulle/assets/rouge.png[/img]"])
 		talking = true
 		await get_tree().create_timer(8).timeout
 		inited = true
@@ -143,8 +143,8 @@ func is_ok():
 func update_bulle():
 	if inited:
 		if busted:
-			$Bulle.update_text("Il n'y avait pas de malentendu, chenapan!")
+			$Bulle.update_text(" Il n'y avait pas de malentendu, chenapan! ")
 		elif is_ok():
-			$Bulle.update_text("...")
+			$Bulle.update_text(" ... ")
 		else:
-			$Bulle.update_text("%d%s??" % [to_be_seen, "[img]res://scenes/Bulle/assets/rouge.png[/img]" if is_maf else "[img]res://scenes/Bulle/assets/bleu.png[/img]"])
+			$Bulle.update_text(" %d%s?? " % [to_be_seen, "[img]res://scenes/Bulle/assets/rouge.png[/img]" if is_maf else "[img]res://scenes/Bulle/assets/bleu.png[/img]"])

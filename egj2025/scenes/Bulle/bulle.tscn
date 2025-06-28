@@ -7,13 +7,11 @@ z_index = 15
 script = ExtResource("1_ln6se")
 
 [node name="Label" type="RichTextLabel" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 26.0
-offset_top = -100.0
-offset_right = 69.0
-offset_bottom = -77.0
+anchors_preset = -1
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 47.0
+offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -30,12 +28,13 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -2.0
-offset_right = 4.0
-offset_bottom = 2.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.94902, 0.921569, 0.866667, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="Label/ColorRect"]
 show_behind_parent = true
