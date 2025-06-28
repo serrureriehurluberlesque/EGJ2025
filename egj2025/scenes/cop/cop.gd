@@ -4,6 +4,7 @@ extends Area2D
 signal bust
 
 @export var to_be_seen := 3
+@export var is_maf := false
 
 var busted = false
 var v = 1.0
@@ -106,9 +107,13 @@ func regarde(area):
 			regarde_attentivement(area)
 
 
+func check_legal(is_legal):
+	return (is_legal and not is_maf) or (not is_legal and is_maf)
+
+
 func regarde_attentivement(area):
 		var ok = is_ok()
-		if area.is_legal:
+		if check_legal(area.is_legal):
 			to_be_seen -= 1
 		else:
 			bust.emit()
@@ -135,4 +140,4 @@ func update_bulle():
 		elif is_ok():
 			$Bulle.update_text("Is ok!")
 		else:
-			$Bulle.update_text("%d🏵️?!" % [to_be_seen])
+			$Bulle.update_text("%d%s?!" % [to_be_seen, "weed" if is_maf else "🏵️"])

@@ -1,5 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://de06ku1jejyw8"]
+[gd_scene load_steps=3 format=3 uid="uid://de06ku1jejyw8"]
 
 [ext_resource type="PackedScene" uid="uid://cxb35anmito8y" path="res://scenes/cop/cop.tscn" id="1_5yxjk"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5yxjk"]
+blend_mode = 2
+
 [node name="Maf" instance=ExtResource("1_5yxjk")]
+is_maf = true
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("CanvasItemMaterial_5yxjk")
