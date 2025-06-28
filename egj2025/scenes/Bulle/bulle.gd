@@ -7,5 +7,8 @@ func _ready() -> void:
 	
 
 func update_text(t):
-	show()
-	$Label.text = t
+	if t:
+		show()
+		$Label.text = t
+	else:
+		hide()
