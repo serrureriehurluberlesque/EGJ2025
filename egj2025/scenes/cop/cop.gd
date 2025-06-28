@@ -20,7 +20,7 @@ var previous_waypoint = Vector2(0, 0)
 var ENTRY = Vector2(992.0, 480.0)
 var DELTAX = 384.0
 var DELTAY = 256.0
-var SPEED = 35.0
+var SPEED = 25.0
 
 var waypoints = {
 	Vector2(0, 0): Vector2(),

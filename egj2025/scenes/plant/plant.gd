@@ -34,6 +34,7 @@ func _ready() -> void:
 	if is_legal:
 		$Interessant.modulate.r = 0.0
 	else:
+		GOTTAGOFAST *= 0.7
 		$Interessant.modulate.b = 0.0
 	update_sprites()
 
@@ -117,8 +118,8 @@ func is_interesting():
 
 
 func cut(delta):
-	cuttage += delta * 10.0
-	leaves_to_emit += delta * 3.0
+	cuttage += delta * 5.0
+	leaves_to_emit += delta * 5.0
 	
 	
 	if cuttage >= MAXCUTTAGE:
