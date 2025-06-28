@@ -12,9 +12,9 @@ var leaving = false
 var left = 0.0
 var current_waypoint = Vector2(0, 0)
 
-var ENTRY = Vector2(900.0, 300.0)
-var DELTAX = 350.0
-var DELTAY = 200.0
+var ENTRY = Vector2(928.0, 352.0)
+var DELTAX = 384.0
+var DELTAY = 256.0
 var SPEED = 125.0
 
 var waypoints = {
