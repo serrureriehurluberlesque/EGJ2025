@@ -28,7 +28,7 @@ const EARTH_PLANTED_ATLAS_COORDS = [
 
 const SEED_COST = 5.0
 const WAIT_COP= 40.0
-const RATIO_MAF = 0.3
+const RATIO_MAF = 0.0
 const RATIO_MEC = 0.0
 
 enum Mode {PLANT_RED_MODE, PLANT_BLUE_MODE, CUT_MODE, GROW_MODE}
@@ -163,9 +163,9 @@ func _on_cop_timer_timeout() -> void:
 	var look_ilegal = true
 	var new_cop
 	
-	if total_cop <= 2 or total_cop > 3 and randf() < RATIO_MEC:
+	if randf() < RATIO_MEC:
 		new_cop = mec_.instantiate()
-	elif total_cop == 3 or randf() < RATIO_MAF:
+	elif randf() < RATIO_MAF:
 		new_cop = maf_.instantiate()
 		look_ilegal = false
 	else:
