@@ -3,14 +3,14 @@ extends Node2D
 signal closed
 
 var explanation = "
-Vous êtes un pauvre cultivateur de fleur, et deux choix s'offrent à vous: cultiver des fleurs basiques et rester dans la pauvreté, ou cultiver les [i]fleurs interdites de Ouïd[/i], plus risquées mais bien plus rentables.\n
-Arriverez-vous à faire fortune en étant plus malin que les autorités ?\n
+Vous êtes un pauvre cultivateur de fleur, et votre unique option pour gagner de l'argent est de cultiver les [i]fleurs interdites de Ouïd[/i].\n
+Les contrôles de polices sont fréquents. Pour faire diversion, il pourrait être utile de tout de même cultiver des fleurs normales.\n
 [u]Outils[/u]
 [ul]
-[b]Sac graines bleues [lb]1[rb][/b]: plante une graine de fleur normale
-[b]Sac graines rouges [lb]2[rb][/b]: plante une graine de fleur Ouïd [i]interdite[/i]
-[b]Cisailles [lb]3[rb][/b]: récolte une fleur si elle est à majorité; coupe la plante sans résultat sinon.
-[b]Arrosoir [lb]4[rb][/b]: permet d'accélérer la pousse des fleurs.
+[b]Sac graines bleues [lb]1[rb][/b]: Plante une graine de fleur normale
+[b]Sac graines rouges [lb]2[rb][/b]: Plante une graine de fleur Ouïd [i]interdite[/i]
+[b]Cisailles [lb]3[rb][/b]: Coupe les plantes pour libérer la place. Si la plante est en fleur, récolte également son revenu.
+[b]Arrosoir [lb]4[rb][/b]: Permet d'accélérer la pousse des fleurs.
 [/ul]\n
 [u]Prix[/u]
 [center][table=3]

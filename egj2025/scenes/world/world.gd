@@ -193,21 +193,10 @@ func _on_cop_timer_timeout() -> void:
 	
 func show_game_over() -> void:
 	await get_tree().create_timer(3).timeout
-	# TODO pause game
-	set_pause_subtree(self, true)
+	get_tree().paused = true
 	Input.set_custom_mouse_cursor(null)
 	$GameOverPanel.show()
 
 func _on_restart_pressed() -> void:
+	get_tree().paused = false
 	get_tree().reload_current_scene()
-	
-func set_pause_subtree(root: Node, pause: bool) -> void:
-	var process_setters = ["set_process",
-	"set_physics_process",
-	"set_process_input",
-	"set_process_unhandled_input",
-	"set_process_unhandled_key_input",
-	"set_process_shortcut_input",]
-	
-	for setter in process_setters:
-		root.propagate_call(setter, [!pause])
