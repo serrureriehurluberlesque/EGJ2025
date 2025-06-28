@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://hgrmaqq3p8gk"]
+[gd_scene load_steps=21 format=3 uid="uid://hgrmaqq3p8gk"]
 
 [ext_resource type="Script" uid="uid://dke0e3xft8lwi" path="res://scenes/plant/plant.gd" id="1_gm68k"]
 [ext_resource type="Texture2D" uid="uid://8t0mfq8rnl1" path="res://scenes/plant/assets/tilesheet.png" id="3_4t85h"]
-[ext_resource type="Texture2D" uid="uid://dfx2gj5vldw3x" path="res://scenes/plant/assets/tileset.png" id="3_85esa"]
+[ext_resource type="Texture2D" uid="uid://bpa3fsii2sy00" path="res://scenes/plant/assets/tileset.png" id="3_85esa"]
 [ext_resource type="Texture2D" uid="uid://csethudy6utv8" path="res://scenes/plant/assets/terron.png" id="4_4t85h"]
 [ext_resource type="Texture2D" uid="uid://dqvfgspnlx6yi" path="res://scenes/plant/assets/etoile.png" id="5_hf3g8"]
 
@@ -24,7 +24,14 @@ region = Rect2(0, 344, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53d6k"]
 atlas = ExtResource("3_85esa")
-region = Rect2(0, 344, 64, 96)
+region = Rect2(64, 344, 64, 96)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hf3g8"]
+load_path = "res://.godot/imported/tileset.png-94d07e1fa75e660f68fb64d5ef085083.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkywt"]
+atlas = SubResource("CompressedTexture2D_hf3g8")
+region = Rect2(128, 344, 64, 96)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gm68k"]
 
@@ -117,6 +124,10 @@ texture = SubResource("AtlasTexture_hf3g8")
 [node name="Step5" type="Sprite2D" parent="."]
 modulate = Color(0.22917, 0.0839651, 0.023088, 1)
 texture = SubResource("AtlasTexture_53d6k")
+
+[node name="Step6" type="Sprite2D" parent="."]
+modulate = Color(0.22917, 0.0839651, 0.023088, 1)
+texture = SubResource("AtlasTexture_dkywt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gm68k")

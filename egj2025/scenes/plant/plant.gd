@@ -18,16 +18,17 @@ var leaves_to_emit = 0.0
 var terre_to_emit = 0.0
 var is_removing = false
 var removing = 0.0
-@onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, LIMITMIN], $Step3: [LIMITMIN, LIMITMAX], $Step4: [LIMITMAX, 170.0], $Step5: [170.0, 200.0]}
+@onready var sprites = {$Step1: [0.0, 33.0], $Step2: [33.0, LIMITMIN], $Step3: [LIMITMIN, LIMITMAX], $Step4: [LIMITMAX, 150.0], $Step5: [150.0, 170.0], $Step6: [170.0, 200.0]}
 
 
 func _ready() -> void:
 	for s in sprites:
 		s.texture = s.texture.duplicate()
+		
 		if is_legal:
-			s.modulate.r = 0.45
-		else:
-			s.modulate.g = 0.85
+			var r = s.texture.region
+			r.position = Vector2(r.position.x + 64 * 3, r.position.y)
+			s.texture.region = r
 	
 	if is_legal:
 		$Interessant.modulate.r = 0.0
@@ -121,3 +122,11 @@ func get_value() -> float:
 			return growth
 	else:
 		return 0.0
+
+
+func start_highlight():
+	modulate = Color(1.2, 1.2, 1.2, modulate.a)
+
+
+func stop_highlight():
+	modulate = Color(1.0, 1.0, 1.0, modulate.a)
