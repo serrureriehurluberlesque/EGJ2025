@@ -110,8 +110,8 @@ func is_interesting():
 
 
 func cut(delta):
-	cuttage += delta * 2.0
-	leaves_to_emit += delta * 2.0
+	cuttage += delta * 3.0
+	leaves_to_emit += delta * 3.0
 	
 	
 	if cuttage >= MAXCUTTAGE:

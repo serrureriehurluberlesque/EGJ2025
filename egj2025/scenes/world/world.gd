@@ -46,27 +46,7 @@ func _ready():
 	plant_blue_mode()
 
 func _input(event):
-	if event.is_action_pressed("activate"):
-		var map_coords = $Map.local_to_map(event.position)
-		
-		if (current_mode == Mode.PLANT_RED_MODE or current_mode == Mode.PLANT_BLUE_MODE) and can_plant(map_coords):
-			$Map.set_cell(map_coords, 2, EARTH_PLANTED_ATLAS_COORDS[randi() % EARTH_PLANTED_ATLAS_COORDS.size()])
-			var new_plant = plant_.instantiate()
-			new_plant.position = $Map.map_to_local(map_coords)
-			new_plant.z_index = map_coords[1]
-			new_plant.connect("cutted", harvest_plant.bind(map_coords))
-			
-			if current_mode == Mode.PLANT_BLUE_MODE:
-				new_plant.is_legal = true
-				
-			$Plants.add_child(new_plant)
-			plants[map_coords] = new_plant
-			
-			# Update moneyy
-			self.moneyy -= SEED_COST
-			display_moneyy()
-
-	elif event.is_action_pressed("plant_blue_mode"):
+	if event.is_action_pressed("plant_blue_mode"):
 		plant_blue_mode()
 	elif event.is_action_pressed("plant_red_mode"):
 		plant_red_mode()
@@ -88,6 +68,23 @@ func _physics_process(delta: float) -> void:
 				plants[map_coords].grow(delta)
 			$Eau.set_position(mouse_position)
 			$Eau.arrose += delta
+		elif (current_mode == Mode.PLANT_RED_MODE or current_mode == Mode.PLANT_BLUE_MODE) and can_plant(map_coords):
+			$Map.set_cell(map_coords, 2, EARTH_PLANTED_ATLAS_COORDS[randi() % EARTH_PLANTED_ATLAS_COORDS.size()])
+			var new_plant = plant_.instantiate()
+			new_plant.position = $Map.map_to_local(map_coords)
+			new_plant.z_index = map_coords[1]
+			new_plant.connect("cutted", harvest_plant.bind(map_coords))
+			
+			if current_mode == Mode.PLANT_BLUE_MODE:
+				new_plant.is_legal = true
+				
+			$Plants.add_child(new_plant)
+			plants[map_coords] = new_plant
+			
+			# Update moneyy
+			self.moneyy -= SEED_COST
+			display_moneyy()
+
 			
 	if map_coords != surbrillanced_tile_coords:
 	#if map_coords in plants.keys() and map_coords != surbrillanced_tile_coords:
