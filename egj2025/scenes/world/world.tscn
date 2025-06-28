@@ -42,8 +42,8 @@ tile_size = Vector2i(64, 64)
 sources/2 = SubResource("TileSetAtlasSource_sl2e5")
 
 [sub_resource type="Gradient" id="Gradient_6m72w"]
-offsets = PackedFloat32Array(0, 0.258065, 0.669355, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.227451, 1, 1, 1, 0.227451, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.258065, 0.636364, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.227451, 1, 1, 1, 0, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_v5dby"]
 gradient = SubResource("Gradient_6m72w")
@@ -51,9 +51,7 @@ gradient = SubResource("Gradient_6m72w")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6m72w"]
 lifetime_randomness = 0.2
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(0, -72, 0)
-emission_shape = 1
-emission_sphere_radius = 32.0
+emission_shape_offset = Vector3(0, -10, 0)
 direction = Vector3(0, 1, 0)
 spread = 30.0
 initial_velocity_min = 60.0
@@ -61,6 +59,7 @@ initial_velocity_max = 60.0
 gravity = Vector3(0, 40, 0)
 damping_min = 10.0
 damping_max = 15.0
+scale_min = 0.5
 color_ramp = SubResource("GradientTexture1D_v5dby")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_srmg5"]
@@ -101,6 +100,7 @@ z_index = 20
 amount = 100
 amount_ratio = 0.0
 texture = ExtResource("3_6m72w")
+collision_base_size = 0.7
 process_material = SubResource("ParticleProcessMaterial_6m72w")
 script = ExtResource("3_1fp7r")
 

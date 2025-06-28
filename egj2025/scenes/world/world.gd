@@ -129,7 +129,7 @@ func cut_mode():
 	
 func grow_mode():
 	current_mode = Mode.GROW_MODE
-	Input.set_custom_mouse_cursor(arrosoir)
+	Input.set_custom_mouse_cursor(arrosoir, 0, Vector2(0, 58))
 	select_button(%WCButton)
 	
 func select_button(button_pressed):

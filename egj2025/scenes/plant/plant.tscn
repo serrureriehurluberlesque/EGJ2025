@@ -148,10 +148,11 @@ texture = ExtResource("3_4t85h")
 process_material = SubResource("ParticleProcessMaterial_gm68k")
 
 [node name="Arrosage" type="GPUParticles2D" parent="."]
-position = Vector2(0, -32)
-amount = 25
+position = Vector2(0, -18)
+amount = 5
 amount_ratio = 0.0
 texture = ExtResource("4_4t85h")
+lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_hf3g8")
 
 [node name="Interessant" type="GPUParticles2D" parent="."]
@@ -161,7 +162,7 @@ texture = ExtResource("5_hf3g8")
 process_material = SubResource("ParticleProcessMaterial_53d6k")
 
 [node name="Pognon" type="GPUParticles2D" parent="."]
-amount = 12
+amount = 2
 amount_ratio = 0.0
 texture = ExtResource("6_53d6k")
 process_material = SubResource("ParticleProcessMaterial_dkywt")
