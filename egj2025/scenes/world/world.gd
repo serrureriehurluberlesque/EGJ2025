@@ -121,12 +121,12 @@ func display_moneyy():
 	
 func open_menu():
 	Input.set_custom_mouse_cursor(null)
-	set_pause_subtree(self, true)
+	get_tree().paused = true
 	$Menu.show()
 	
 func close_menu():
 	Input.set_custom_mouse_cursor(current_cursor)
-	set_pause_subtree(self, false)
+	get_tree().paused = false
 	$Menu.hide()
 
 func plant_blue_mode():

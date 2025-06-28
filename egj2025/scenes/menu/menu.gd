@@ -20,7 +20,7 @@ Arriverez-vous à faire fortune en étant plus malin que les autorités ?\n
 [/table][/center]
 "
 
-const COST_REVENUE_LIST = [5, 5, 5, 25]
+const COST_REVENUE_LIST = [5, 0, 5, 25]
 
 func _ready() -> void:
 	$Background/Explanation.text = explanation % COST_REVENUE_LIST
