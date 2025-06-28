@@ -10,6 +10,7 @@ var v = 1.0
 var walking = true
 var leaving = false
 var left = 0.0
+var inited = false
 var current_waypoint = Vector2(0, 0)
 
 var ENTRY = Vector2(928.0, 352.0)
@@ -71,10 +72,18 @@ func get_nearest_waypoint(next_waypoint):
 
 
 func compute_next_waypoint():
-	var next_waypoint = Vector2(-99, -99)
-	while not is_ok_waypoint(next_waypoint):
-		next_waypoint = current_waypoint + Vector2(1.0, 0).rotated(PI/2 * (randi() % 4))
-	current_waypoint = get_nearest_waypoint(next_waypoint)
+	if inited:
+		var next_waypoint = Vector2(-99, -99)
+		while not is_ok_waypoint(next_waypoint):
+			next_waypoint = current_waypoint + Vector2(1.0, 0).rotated(PI/2 * (randi() % 4))
+		current_waypoint = get_nearest_waypoint(next_waypoint)
+	else:
+		$Bulle.update_text("%d🌿?!" % [to_be_seen])
+		await get_tree().create_timer(6).timeout
+		inited = true
+		update_bulle()
+		for c in get_overlapping_areas():
+			regarde(c)
 
 
 func _process(delta: float) -> void:
@@ -92,8 +101,9 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func regarde(area):
-	if area.is_interesting():
-		regarde_attentivement(area)
+	if inited:
+		if area.is_interesting():
+			regarde_attentivement(area)
 
 
 func regarde_attentivement(area):
@@ -117,10 +127,12 @@ func buste():
 func is_ok():
 	return to_be_seen <= 0
 
+
 func update_bulle():
-	if busted:
-		$Bulle.update_text("Il n'y avait pas de malentendu, chenapan!")
-	elif is_ok():
-		$Bulle.update_text("Is ok!")
-	else:
-		$Bulle.update_text("%d🌿?!" % [to_be_seen])
+	if inited:
+		if busted:
+			$Bulle.update_text("Il n'y avait pas de malentendu, chenapan!")
+		elif is_ok():
+			$Bulle.update_text("Is ok!")
+		else:
+			$Bulle.update_text("%d🏵️?!" % [to_be_seen])
