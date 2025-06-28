@@ -26,7 +26,7 @@ const EARTH_PLANTED_ATLAS_COORDS = [
 	Vector2i(2,2),
 ]
 
-const SEED_COST = 25.0
+const SEED_COST = 5.0
 const WAIT_COP= 40.0
 const RATIO_MAF = 0.3
 const RATIO_MEC = 0.0

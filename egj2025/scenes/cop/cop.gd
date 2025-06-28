@@ -20,7 +20,7 @@ var previous_waypoint = Vector2(0, 0)
 var ENTRY = Vector2(928.0, 352.0)
 var DELTAX = 384.0
 var DELTAY = 256.0
-var SPEED = 45.0
+var SPEED = 35.0
 
 var waypoints = {
 	Vector2(0, 0): Vector2(),
@@ -51,7 +51,7 @@ func walk(delta):
 		compute_next_waypoint()
 	else:
 		var dp = (waypoints[current_waypoint] - get_position())
-		var l = min(SPEED * delta, dp.length())
+		var l = min(SPEED * delta * 1.0 if inited else 3.0, dp.length())
 		
 		set_position(get_position() + dp.normalized() * l)
 		
