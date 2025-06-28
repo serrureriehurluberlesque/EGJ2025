@@ -11,6 +11,7 @@ var LIMITMIN = 66.0
 var LIMITMAX = 133.0
 var GOTTAGOFAST = 0.25  # 1.0 for true game
 var MAXCUTTAGE = 1.0
+var VALUE_MORNE_ET_NULLE = 25.0
 
 var growth := 0.0
 var cuttage = 0.0
@@ -138,9 +139,9 @@ func cut(delta):
 func get_value() -> float:
 	if is_interesting():
 		if is_legal:
-			return 0  # growth / 3.5
+			return VALUE_MORNE_ET_NULLE / 5.0
 		else:
-			return growth / 2.0
+			return VALUE_MORNE_ET_NULLE
 	else:
 		return 0.0
 
