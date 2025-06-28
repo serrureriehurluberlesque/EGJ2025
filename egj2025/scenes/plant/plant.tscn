@@ -1,15 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://hgrmaqq3p8gk"]
+[gd_scene load_steps=13 format=3 uid="uid://hgrmaqq3p8gk"]
 
 [ext_resource type="Script" uid="uid://dke0e3xft8lwi" path="res://scenes/plant/plant.gd" id="1_gm68k"]
+[ext_resource type="Texture2D" uid="uid://8t0mfq8rnl1" path="res://scenes/plant/assets/tilesheet.png" id="3_4t85h"]
 [ext_resource type="Texture2D" uid="uid://dfx2gj5vldw3x" path="res://scenes/plant/assets/tileset.png" id="3_85esa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4t85h"]
 atlas = ExtResource("3_85esa")
-region = Rect2(128, 250, 64, 128)
+region = Rect2(128, 250, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gm68k"]
 atlas = ExtResource("3_85esa")
-region = Rect2(64, 220, 64, 128)
+region = Rect2(64, 220, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85esa"]
 atlas = ExtResource("3_85esa")
@@ -17,11 +18,11 @@ region = Rect2(0, 214, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hf3g8"]
 atlas = ExtResource("3_85esa")
-region = Rect2(0, 214, 64, 128)
+region = Rect2(0, 344, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53d6k"]
 atlas = ExtResource("3_85esa")
-region = Rect2(0, 214, 64, 128)
+region = Rect2(0, 344, 64, 96)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gm68k"]
 
@@ -45,8 +46,8 @@ initial_velocity_max = 100.0
 gravity = Vector3(0, 98, 0)
 damping_min = 25.0
 damping_max = 50.0
-scale_min = 0.7
-scale_max = 1.2
+scale_min = 0.35
+scale_max = 0.8
 color_ramp = SubResource("GradientTexture1D_85esa")
 
 [node name="Plant" type="Area2D"]
@@ -67,7 +68,7 @@ modulate = Color(0.283312, 0.509887, 0.559423, 1)
 texture = SubResource("AtlasTexture_hf3g8")
 
 [node name="Step5" type="Sprite2D" parent="."]
-modulate = Color(0.283577, 0.110607, 0.0352141, 1)
+modulate = Color(0.22917, 0.0839651, 0.023088, 1)
 texture = SubResource("AtlasTexture_53d6k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -76,4 +77,5 @@ shape = SubResource("CircleShape2D_gm68k")
 [node name="Coupage" type="GPUParticles2D" parent="."]
 amount = 100
 amount_ratio = 0.0
+texture = ExtResource("3_4t85h")
 process_material = SubResource("ParticleProcessMaterial_gm68k")

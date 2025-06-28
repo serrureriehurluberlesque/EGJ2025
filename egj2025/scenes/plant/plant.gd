@@ -22,6 +22,10 @@ var removing = 0.0
 func _ready() -> void:
 	for s in sprites:
 		s.texture = s.texture.duplicate()
+		if is_legal:
+			s.modulate.r = 0.45
+		else:
+			s.modulate.g = 0.85
 	update_sprites()
 
 

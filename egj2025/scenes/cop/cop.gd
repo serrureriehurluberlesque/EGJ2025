@@ -54,4 +54,4 @@ func update_bulle():
 	elif is_ok():
 		$Bulle.update_text("Is ok!")
 	else:
-		$Bulle.update_text("%dN?!" % [to_be_seen])
+		$Bulle.update_text("%d🌿?!" % [to_be_seen])
