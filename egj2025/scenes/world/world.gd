@@ -2,6 +2,8 @@ extends Control
 
 var plant_ = preload("res://scenes/plant/plant.tscn")
 var cop_ = preload("res://scenes/cop/cop.tscn")
+var maf_ = preload("res://scenes/cop/maf.tscn")
+var mec_ = preload("res://scenes/cop/mec.tscn")
 
 var graines_rouges = load("res://scenes/world/assets/sacgrainesrouge_small.png")
 var graines_bleues = load("res://scenes/world/assets/sacgrainesbleu_small.png")
@@ -20,10 +22,14 @@ const EARTH_TILES_ATLAS_COORDS = [
 ]
 
 const SEED_COST = 1
+const WAIT_COP= 20.0
+const RATIO_MAF = 0.3
+const RATIO_MEC = 0.1
 
 enum Mode {PLANT_RED_MODE, PLANT_BLUE_MODE, CUT_MODE, GROW_MODE}
 
 var plants = {}
+var total_cop = 0
 var moneyy = 10
 var current_mode: Mode
 var selected_button: TextureButton
@@ -118,10 +124,19 @@ func select_button(button_pressed):
 	
 func _on_cop_timer_timeout() -> void:
 	var n = 3  # number of plants to be get
-	var new_cop = cop_.instantiate()
+	var new_cop
+	if randf() < RATIO_MEC:
+		new_cop = mec_.instantiate()
+	elif randf() < RATIO_MAF:
+		new_cop = maf_.instantiate()
+	else:
+		new_cop = cop_.instantiate()
+	
 	new_cop.position = $CopSpawn.position
 	new_cop.to_be_seen = n
 	add_child(new_cop)
+	$CopTimer.wait_time = WAIT_COP * 0.9 ** total_cop * (0.75 + randf() / 2.0) 
+	total_cop += 1
 	$CopTimer.start()
 	await get_tree().create_timer(4.5).timeout
 	$Player.start_talking(n)
