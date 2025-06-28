@@ -1,12 +1,14 @@
-extends Node2D
+extends Control
 
 var plant_ = preload("res://scenes/plant/plant.tscn")
 var cop_ = preload("res://scenes/cop/cop.tscn")
 
-var graines_rouges = load("res://scenes/world/assets/sacgrainesrouge.png")
-var graines_bleues = load("res://scenes/world/assets/sacgrainesbleu.png")
+var graines_rouges = load("res://scenes/world/assets/sacgrainesrouge_small.png")
+var graines_bleues = load("res://scenes/world/assets/sacgrainesbleu_small.png")
 var secateur = load("res://scenes/world/assets/secateur.png")
-var arrosoir = load("res://scenes/world/assets/arrosoir.png")
+var arrosoir = load("res://scenes/world/assets/arrosoir_small.png")
+
+
 
 
 const EARTH_TILES_ATLAS_COORDS = [

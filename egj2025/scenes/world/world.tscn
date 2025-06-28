@@ -1,9 +1,15 @@
-[gd_scene load_steps=10 format=4 uid="uid://cone1vfjta5ci"]
+[gd_scene load_steps=16 format=4 uid="uid://cone1vfjta5ci"]
 
 [ext_resource type="Texture2D" uid="uid://cfeotk3njv6aq" path="res://scenes/world/assets/tileset.png" id="1_dphjl"]
 [ext_resource type="Script" uid="uid://byoreb471ajxb" path="res://scenes/world/world.gd" id="2_sl2e5"]
-[ext_resource type="Script" uid="uid://mdwi4esf8lgp" path="res://scenes/world/eau.gd" id="3_1fp7r"]
+[ext_resource type="Script" path="res://scenes/world/eau.gd" id="3_1fp7r"]
 [ext_resource type="Texture2D" uid="uid://c6o60tjqbe5jw" path="res://scenes/world/assets/goutte.png" id="3_6m72w"]
+[ext_resource type="Texture2D" uid="uid://c50a7b5s8jvcl" path="res://scenes/world/assets/rack_outils.png" id="3_v5dby"]
+[ext_resource type="Texture2D" uid="uid://c52gefwiegbhl" path="res://scenes/world/assets/cageot.png" id="4_t5ptc"]
+[ext_resource type="Texture2D" uid="uid://d2tqdcbn68y5j" path="res://scenes/world/assets/sacgrainesbleu.png" id="5_bq33v"]
+[ext_resource type="Texture2D" uid="uid://bu6l4ucn7xwtm" path="res://scenes/world/assets/sacgrainesrouge.png" id="6_j2gmx"]
+[ext_resource type="Texture2D" uid="uid://i52esvoo3pg3" path="res://scenes/world/assets/secateur.png" id="7_1yooq"]
+[ext_resource type="Texture2D" uid="uid://coupf12j5urny" path="res://scenes/world/assets/arrosoir.png" id="8_gb53w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sl2e5"]
 texture = ExtResource("1_dphjl")
@@ -55,7 +61,13 @@ damping_min = 10.0
 damping_max = 15.0
 color_ramp = SubResource("GradientTexture1D_v5dby")
 
-[node name="World" type="Node2D"]
+[node name="World" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_sl2e5")
 
 [node name="Map" type="TileMapLayer" parent="."]
@@ -69,14 +81,19 @@ wait_time = 10.0
 position = Vector2(1321, 420)
 
 [node name="MoneyyLabel" type="Label" parent="."]
-offset_left = 980.0
-offset_top = 11.0
-offset_right = 1142.0
-offset_bottom = 57.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_right = 0.5
+offset_bottom = 23.0
+grow_horizontal = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
 [node name="ModeLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 985.0
 offset_top = 78.0
 offset_right = 1143.0
@@ -90,4 +107,131 @@ texture = ExtResource("3_6m72w")
 process_material = SubResource("ParticleProcessMaterial_6m72w")
 script = ExtResource("3_1fp7r")
 
+[node name="RackOutils" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -225.5
+offset_top = -127.0
+offset_right = 225.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_v5dby")
+stretch_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="RackOutils"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlantesBleues" type="MarginContainer" parent="RackOutils/Buttons"]
+layout_mode = 2
+theme_override_constants/margin_left = 17
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 2
+
+[node name="PBButton" type="TextureButton" parent="RackOutils/Buttons/PlantesBleues"]
+layout_mode = 2
+texture_normal = ExtResource("4_t5ptc")
+
+[node name="PBimg" type="TextureRect" parent="RackOutils/Buttons/PlantesBleues/PBButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -40.5
+offset_right = 27.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_bq33v")
+
+[node name="PlantesRouges" type="MarginContainer" parent="RackOutils/Buttons"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 2
+
+[node name="PRButton" type="TextureButton" parent="RackOutils/Buttons/PlantesRouges"]
+layout_mode = 2
+texture_normal = ExtResource("4_t5ptc")
+
+[node name="PRimg" type="TextureRect" parent="RackOutils/Buttons/PlantesRouges/PRButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -41.5
+offset_right = 26.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_j2gmx")
+
+[node name="Cisors" type="MarginContainer" parent="RackOutils/Buttons"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 2
+
+[node name="CButton" type="TextureButton" parent="RackOutils/Buttons/Cisors"]
+layout_mode = 2
+texture_normal = ExtResource("4_t5ptc")
+
+[node name="Cimg" type="TextureRect" parent="RackOutils/Buttons/Cisors/CButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -39.0
+offset_right = 45.5
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_1yooq")
+
+[node name="WateringCan" type="MarginContainer" parent="RackOutils/Buttons"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 17
+
+[node name="WCButton" type="TextureButton" parent="RackOutils/Buttons/WateringCan"]
+layout_mode = 2
+texture_normal = ExtResource("4_t5ptc")
+
+[node name="PRimg" type="TextureRect" parent="RackOutils/Buttons/WateringCan/WCButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.5
+offset_top = -74.0
+offset_right = 38.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_gb53w")
+
 [connection signal="timeout" from="CopTimer" to="." method="_on_cop_timer_timeout"]
+[connection signal="pressed" from="RackOutils/Buttons/PlantesBleues/PBButton" to="." method="plant_blue_mode"]
+[connection signal="pressed" from="RackOutils/Buttons/PlantesRouges/PRButton" to="." method="plant_red_mode"]
+[connection signal="pressed" from="RackOutils/Buttons/Cisors/CButton" to="." method="cut_mode"]
+[connection signal="pressed" from="RackOutils/Buttons/WateringCan/WCButton" to="." method="grow_mode"]
