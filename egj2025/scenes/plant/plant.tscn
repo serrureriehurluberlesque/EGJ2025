@@ -162,7 +162,7 @@ texture = ExtResource("5_hf3g8")
 process_material = SubResource("ParticleProcessMaterial_53d6k")
 
 [node name="Pognon" type="GPUParticles2D" parent="."]
-amount = 2
+amount = 5
 amount_ratio = 0.0
 texture = ExtResource("6_53d6k")
 process_material = SubResource("ParticleProcessMaterial_dkywt")
