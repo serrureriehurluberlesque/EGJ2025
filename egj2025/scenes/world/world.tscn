@@ -166,6 +166,16 @@ grow_horizontal = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
+[node name="ColorRect" type="ColorRect" parent="MoneyyLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Eau" type="GPUParticles2D" parent="."]
 z_index = 20
 amount = 50
