@@ -33,6 +33,13 @@ const RATIO_MEC = 0.0
 
 enum Mode {PLANT_RED_MODE, PLANT_BLUE_MODE, CUT_MODE, GROW_MODE}
 
+var upgraded = {
+	Mode.PLANT_RED_MODE: false,
+	Mode.PLANT_BLUE_MODE: false,
+	Mode.CUT_MODE: false,
+	Mode.GROW_MODE: false,
+}
+
 var plants = {}
 var total_cop = 0
 var moneyy = 100.0
@@ -60,47 +67,59 @@ func _input(event):
 		grow_mode()
 
 func _physics_process(delta: float) -> void:
+	if moneyy >= 500:
+		for u in upgraded:
+			upgraded[u] = true
+	
+	
 	var mouse_position = get_viewport().get_mouse_position()
-	var map_coords = $Map.local_to_map(mouse_position)
+	var map_coordss = [$Map.local_to_map(mouse_position)]
+	if upgraded[current_mode]:
+		for v in [Vector2(-64, 0), Vector2(64, 0), Vector2(0, -64), Vector2(0, 64)]:
+			map_coordss.append($Map.local_to_map(mouse_position + v))
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if current_mode == Mode.CUT_MODE:
-			if map_coords in plants.keys():
-				plants[map_coords].cut(delta)
+			for map_coords in map_coordss:
+				if map_coords in plants.keys():
+					plants[map_coords].cut(delta)
 		elif current_mode == Mode.GROW_MODE:
-			if map_coords in plants.keys():
-				plants[map_coords].grow(delta)
-			$Eau.set_position(mouse_position)
-			$Eau.arrose += delta
-		elif (current_mode == Mode.PLANT_RED_MODE or current_mode == Mode.PLANT_BLUE_MODE) and can_plant(map_coords):
-			$Map.set_cell(map_coords, 2, EARTH_PLANTED_ATLAS_COORDS[randi() % EARTH_PLANTED_ATLAS_COORDS.size()])
-			var new_plant = plant_.instantiate()
-			new_plant.position = $Map.map_to_local(map_coords)
-			new_plant.z_index = map_coords[1]
-			new_plant.connect("cutted", harvest_plant.bind(map_coords))
-			
-			if current_mode == Mode.PLANT_BLUE_MODE:
-				new_plant.is_legal = true
+			for map_coords in map_coordss:
+				if map_coords in plants.keys():
+					plants[map_coords].grow(delta)
+				$Eau.set_position(mouse_position)
+				$Eau.arrose += delta
+		elif (current_mode == Mode.PLANT_RED_MODE or current_mode == Mode.PLANT_BLUE_MODE):
+			for map_coords in map_coordss:
+				if can_plant(map_coords):
+					$Map.set_cell(map_coords, 2, EARTH_PLANTED_ATLAS_COORDS[randi() % EARTH_PLANTED_ATLAS_COORDS.size()])
+					var new_plant = plant_.instantiate()
+					new_plant.position = $Map.map_to_local(map_coords)
+					new_plant.z_index = map_coords[1]
+					new_plant.connect("cutted", harvest_plant.bind(map_coords))
 				
-			$Plants.add_child(new_plant)
-			plants[map_coords] = new_plant
-			
-			# Update moneyy
-			self.moneyy -= SEED_COST
-			display_moneyy()
+					if current_mode == Mode.PLANT_BLUE_MODE:
+						new_plant.is_legal = true
+					
+					$Plants.add_child(new_plant)
+					plants[map_coords] = new_plant
+					
+					# Update moneyy
+					self.moneyy -= SEED_COST
+					display_moneyy()
+	
+	for map_coords in [map_coordss[0]]:
+		if map_coords != surbrillanced_tile_coords:
+		#if map_coords in plants.keys() and map_coords != surbrillanced_tile_coords:
+			#var tile_data = $Map.get_cell_tile_data(map_coords)
+			#tile_data.set_modulate(Color(1.2, 1.2, 1.2, 1))
+			if map_coords in plants.keys():
+				plants[map_coords].start_highlight()
 
-			
-	if map_coords != surbrillanced_tile_coords:
-	#if map_coords in plants.keys() and map_coords != surbrillanced_tile_coords:
-		#var tile_data = $Map.get_cell_tile_data(map_coords)
-		#tile_data.set_modulate(Color(1.2, 1.2, 1.2, 1))
-		if map_coords in plants.keys():
-			plants[map_coords].start_highlight()
-
-		if surbrillanced_tile_coords and surbrillanced_tile_coords in plants.keys():
-			#$Map.get_cell_tile_data(surbrillanced_tile_coords).set_modulate(Color(1, 1, 1, 1))
-			plants[surbrillanced_tile_coords].stop_highlight()
-		surbrillanced_tile_coords = map_coords
+			if surbrillanced_tile_coords and surbrillanced_tile_coords in plants.keys():
+				#$Map.get_cell_tile_data(surbrillanced_tile_coords).set_modulate(Color(1, 1, 1, 1))
+				plants[surbrillanced_tile_coords].stop_highlight()
+			surbrillanced_tile_coords = map_coords
 		
 func can_plant(map_coords: Vector2i):
 	return $Map.get_cell_atlas_coords(map_coords) in EARTH_TILES_ATLAS_COORDS \
