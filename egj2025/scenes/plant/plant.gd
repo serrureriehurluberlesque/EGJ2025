@@ -46,7 +46,10 @@ func _physics_process(delta: float) -> void:
 		if growth > LIMITMAX:
 			$Coupage.texture = load("res://scenes/plant/assets/dead.png")
 		elif growth > LIMITMIN:
-			$Coupage.texture = load("res://scenes/plant/assets/petale.png")
+			if is_legal:
+				$Coupage.texture = load("res://scenes/plant/assets/bleu.png")
+			else:
+				$Coupage.texture = load("res://scenes/plant/assets/petale.png")
 		$Coupage.amount_ratio = 1.0
 		leaves_to_emit -= delta
 	else:
