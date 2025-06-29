@@ -151,4 +151,4 @@ func update_bulle():
 		elif is_ok():
 			$Bulle.update_text(" ... ")
 		else:
-			$Bulle.update_text(" Je veux voir %s%d %s ! " % ["encore " if seen_one else "", to_be_seen, "[img]res://scenes/Bulle/assets/rouge.png[/img]" if is_maf else "[img]res://scenes/Bulle/assets/bleu.png[/img]"])
+			$Bulle.update_text("  Je veux voir %s%d %s !  " % ["encore " if seen_one else "", to_be_seen, "[img]res://scenes/Bulle/assets/rouge.png[/img]" if is_maf else "[img]res://scenes/Bulle/assets/bleu.png[/img]"])
