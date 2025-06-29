@@ -85,11 +85,6 @@ func _physics_process(delta: float) -> void:
 	if moneyy >= 500:
 		open_info_2()
 		RATIO_MAF = 0.3
-		for bu in buttons_upgrade:
-			bu.modulate = Color(1.0, 1.0, 1.0, 1.0)
-	else:
-		for bu in buttons_upgrade:
-			bu.modulate = Color(0.5, 0.35, 0.5, 1.0)
 	
 	if moneyy <= 6.0 and len($Plants.get_children()) == 0:
 		moneyy += 5  # anti soft-lock
