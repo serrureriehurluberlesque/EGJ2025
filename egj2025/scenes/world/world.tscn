@@ -481,6 +481,7 @@ horizontal_alignment = 1
 
 [node name="PRBetter" type="MenuButton" parent="RackOutils/Buttons/PlantesRouges/PRButton"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 66.5
 offset_top = 75.0
 offset_right = 88.5
@@ -534,6 +535,7 @@ horizontal_alignment = 1
 
 [node name="CBetter" type="MenuButton" parent="RackOutils/Buttons/Cisors/CButton"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 66.5
 offset_top = 75.0
 offset_right = 88.5
@@ -587,6 +589,7 @@ horizontal_alignment = 1
 
 [node name="WCBetter" type="MenuButton" parent="RackOutils/Buttons/WateringCan/WCButton"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 66.5
 offset_top = 75.0
 offset_right = 88.5

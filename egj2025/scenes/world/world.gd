@@ -249,10 +249,24 @@ func _on_credits_pressed() -> void:
 	$CreditsPanel.show()
 	
 func handle_blue_seeds_improvement(id):
-	pass # TODO handle blue seed improvement
+	if try_to_upgrade(Mode.PLANT_BLUE_MODE):
+		$RackOutils/Buttons/PlantesBleues/PBButton/PBBetter.queue_free()
+
 func handle_red_seeds_improvement(id):
-	pass # TODO handle red seed improvement
+	if try_to_upgrade(Mode.PLANT_RED_MODE):
+		$RackOutils/Buttons/PlantesRouges/PBButton/PBBetter.queue_free()
+
 func handle_cissors_improvement(id):
-	pass # TODO handle cissors improvement
+	if try_to_upgrade(Mode.CUT_MODE):
+		$RackOutils/Buttons/Cisors/PBButton/PBBetter.queue_free()
+
 func handle_watering_can_improvement(id):
-	pass # TODO handle watering can improvement
+	if try_to_upgrade(Mode.GROW_MODE):
+		$RackOutils/Buttons/WateringCan/PBButton/PBBetter.queue_free()
+
+func try_to_upgrade(mode):
+	if not upgraded[mode] and moneyy >= 1000.0:
+		moneyy -= 1000.0
+		upgraded[mode] = true
+		return true
+	return false
