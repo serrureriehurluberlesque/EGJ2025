@@ -495,11 +495,9 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
-text = "[b]Visuels et musique[/b]: Michele Oliosi
+text = "[b]Assets and bardic business[/b]: Michele Oliosi
 
-[b]Programmation[/b]: Hugo Dupraz
-
-[b]Programmation[/b]: Elsa Weber"
+[b]GameDev and wizardry[/b]: Elsa Weber, Hugo Dupraz"
 
 [node name="GameOverPanel" type="TextureRect" parent="."]
 visible = false
