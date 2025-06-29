@@ -67,7 +67,7 @@ func _input(event):
 		grow_mode()
 
 func _physics_process(delta: float) -> void:
-	if moneyy >= 500:
+	if moneyy >= 200:
 		for u in upgraded:
 			upgraded[u] = true
 	
@@ -78,6 +78,11 @@ func _physics_process(delta: float) -> void:
 		for v in [Vector2(-64, 0), Vector2(64, 0), Vector2(0, -64), Vector2(0, 64)]:
 			map_coordss.append($Map.local_to_map(mouse_position + v))
 	
+	if upgraded[Mode.GROW_MODE]:
+		$Eau.amount = 200
+		$Eau.process_material.spread = 60.0
+		$Eau.lifetime = 1.5
+	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if current_mode == Mode.CUT_MODE:
 			for map_coords in map_coordss:
@@ -87,6 +92,7 @@ func _physics_process(delta: float) -> void:
 			for map_coords in map_coordss:
 				if map_coords in plants.keys():
 					plants[map_coords].grow(delta)
+			for map_coords in [map_coordss[0]]:
 				$Eau.set_position(mouse_position)
 				$Eau.arrose += delta
 		elif (current_mode == Mode.PLANT_RED_MODE or current_mode == Mode.PLANT_BLUE_MODE):
@@ -197,11 +203,14 @@ func _on_cop_timer_timeout() -> void:
 	for p in $Plants.get_children():
 		if (look_ilegal and not p.is_legal) or (not look_ilegal and p.is_legal):
 			n += 1
-			n *= 0.8
-			if not look_ilegal:
-				n *= 0.5
+			n *= 0.99
+	
+	n *= 0.6
+	if not look_ilegal:
+		n *= 0.5
 	
 	n = round(max(0.6 + total_cop / 3.0, n + total_cop / 3.0))
+	n = min(n, round(2 + total_cop * 4))
 	
 	new_cop.position = $CopSpawn.position
 	new_cop.to_be_seen = n

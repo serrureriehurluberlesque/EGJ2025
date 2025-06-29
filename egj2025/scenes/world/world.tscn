@@ -162,7 +162,7 @@ size_flags_vertical = 8
 
 [node name="Eau" type="GPUParticles2D" parent="."]
 z_index = 20
-amount = 100
+amount = 50
 amount_ratio = 0.0
 texture = ExtResource("3_6m72w")
 collision_base_size = 0.7
