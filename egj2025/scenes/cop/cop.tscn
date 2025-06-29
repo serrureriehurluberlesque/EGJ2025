@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxb35anmito8y"]
+[gd_scene load_steps=6 format=3 uid="uid://cxb35anmito8y"]
 
 [ext_resource type="Script" uid="uid://corhg2w6jirfu" path="res://scenes/cop/cop.gd" id="1_07r8s"]
 [ext_resource type="Texture2D" uid="uid://cnu35kl4m8284" path="res://scenes/cop/assets/policier_draft.png" id="1_ntmcy"]
+[ext_resource type="Texture2D" uid="uid://clmogb3wneiw7" path="res://icon.svg" id="3_dbtw0"]
 [ext_resource type="PackedScene" uid="uid://nga8pa818l3t" path="res://scenes/Bulle/bulle.tscn" id="3_ign4a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rhfd4"]
@@ -17,6 +18,12 @@ texture = ExtResource("1_ntmcy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 64)
 shape = SubResource("CircleShape2D_rhfd4")
+
+[node name="Vision" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.12549)
+position = Vector2(0, 64)
+scale = Vector2(3.125, 3.125)
+texture = ExtResource("3_dbtw0")
 
 [node name="Bulle" parent="." instance=ExtResource("3_ign4a")]
 

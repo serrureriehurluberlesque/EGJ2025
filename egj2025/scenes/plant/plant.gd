@@ -43,6 +43,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	grow(delta * GOTTAGOFAST, false)
 	if leaves_to_emit > 0.0:
+		if growth > LIMITMAX:
+			$Coupage.texture = load("res://scenes/plant/assets/dead.png")
+		elif growth > LIMITMIN:
+			$Coupage.texture = load("res://scenes/plant/assets/petale.png")
 		$Coupage.amount_ratio = 1.0
 		leaves_to_emit -= delta
 	else:
@@ -119,8 +123,8 @@ func is_interesting():
 
 
 func cut(delta):
-	cuttage += delta * 5.0
-	leaves_to_emit += delta * 5.0
+	cuttage += delta * 3.0
+	leaves_to_emit += delta * 3.0
 	
 	
 	if cuttage >= MAXCUTTAGE:
