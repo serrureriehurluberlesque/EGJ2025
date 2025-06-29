@@ -21,7 +21,7 @@ Les contrôles de polices sont fréquents. Pour faire diversion, il pourrait êt
 "
 
 var explanation2 = "
-Tu auras bientôt tes vacances aux Caraïbes à 5000$. Fais vite, les révolutionnaires Drouïdes Éclairés commencent à rôder.
+Tu auras bientôt tes vacances aux Caraïbes à 3000$. Fais vite, les révolutionnaires Drouïdes Éclairés commencent à rôder.
 Ils sont fermement contre le fait de cultiver des fleurs à perte pour le système.
 Fais attention à ce qu'ils ne voient pas de fleur bleue dans ton champ !\n
 [u]Améliorations[/u]
