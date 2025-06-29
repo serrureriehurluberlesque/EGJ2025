@@ -578,6 +578,15 @@ libraries = {
 stream = ExtResource("18_bt7bg")
 autoplay = true
 
+[node name="Cut" type="AudioStreamPlayer2D" parent="."]
+attenuation = 0.01
+
+[node name="Grow" type="AudioStreamPlayer2D" parent="."]
+attenuation = 0.01
+
+[node name="Plant" type="AudioStreamPlayer2D" parent="."]
+attenuation = 0.01
+
 [connection signal="timeout" from="CopTimer" to="." method="_on_cop_timer_timeout"]
 [connection signal="pressed" from="RackOutils/Buttons/PlantesBleues/PBButton" to="." method="plant_blue_mode"]
 [connection signal="pressed" from="RackOutils/Buttons/PlantesRouges/PRButton" to="." method="plant_red_mode"]
