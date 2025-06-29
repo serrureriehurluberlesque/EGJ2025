@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://b4t6j13xmrqy2" path="res://scenes/cop/assets/revolutionnaire.png" id="2_4wiqc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5yxjk"]
-blend_mode = 2
 
 [node name="Maf" instance=ExtResource("1_5yxjk")]
 is_maf = true
