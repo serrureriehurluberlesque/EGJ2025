@@ -582,8 +582,9 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("18_bt7bg")
-volume_db = -20.06
+volume_db = -10.06
 autoplay = true
 
 [node name="Cut" type="AudioStreamPlayer2D" parent="."]
