@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cone1vfjta5ci"]
+[gd_scene load_steps=26 format=4 uid="uid://cone1vfjta5ci"]
 
 [ext_resource type="Texture2D" uid="uid://cfeotk3njv6aq" path="res://scenes/world/assets/tileset.png" id="1_dphjl"]
 [ext_resource type="Texture2D" uid="uid://dkrn213gaexf7" path="res://scenes/world/assets/background.png" id="2_m114p"]
@@ -12,10 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://i52esvoo3pg3" path="res://scenes/world/assets/secateur.png" id="7_1yooq"]
 [ext_resource type="Texture2D" uid="uid://coupf12j5urny" path="res://scenes/world/assets/arrosoir.png" id="8_gb53w"]
 [ext_resource type="PackedScene" uid="uid://cyklhmk04t4as" path="res://scenes/player/player.tscn" id="11_5qq27"]
-[ext_resource type="Texture2D" uid="uid://d3xkpwti0gqfb" path="res://scenes/menu/assets/PointInterrogation.png" id="12_mxkvs"]
 [ext_resource type="PackedScene" uid="uid://c76l4erpwru8m" path="res://scenes/menu/menu.tscn" id="12_srmg5"]
+[ext_resource type="Texture2D" uid="uid://bscvyp7bfj7oc" path="res://scenes/menu/assets/help_button.png" id="13_71ii3"]
 [ext_resource type="Texture2D" uid="uid://0pg4tt4w8r77" path="res://scenes/menu/assets/EndingScene.png" id="13_srmg5"]
 [ext_resource type="Texture2D" uid="uid://8434qqaexg8f" path="res://scenes/menu/assets/Credits.png" id="13_umvgx"]
+[ext_resource type="Texture2D" uid="uid://4w3ucb2f3pfn" path="res://scenes/menu/assets/help_button_hover.png" id="14_bt7bg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sl2e5"]
 texture = ExtResource("1_dphjl")
@@ -365,16 +366,18 @@ position = Vector2(901, 960)
 [node name="Plants" type="Node2D" parent="."]
 
 [node name="HelpButton" type="TextureButton" parent="."]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 202.0
-offset_top = -113.0
-offset_right = 310.0
-offset_bottom = -65.0
+offset_left = 196.0
+offset_top = -117.0
+offset_right = 318.0
+offset_bottom = -53.0
 grow_vertical = 0
-texture_normal = ExtResource("12_mxkvs")
+texture_normal = ExtResource("13_71ii3")
+texture_hover = ExtResource("14_bt7bg")
 stretch_mode = 3
 
 [node name="Menu" parent="." instance=ExtResource("12_srmg5")]
@@ -525,7 +528,7 @@ libraries = {
 [connection signal="pressed" from="RackOutils/Buttons/PlantesRouges/PRButton" to="." method="plant_red_mode"]
 [connection signal="pressed" from="RackOutils/Buttons/Cisors/CButton" to="." method="cut_mode"]
 [connection signal="pressed" from="RackOutils/Buttons/WateringCan/WCButton" to="." method="grow_mode"]
-[connection signal="pressed" from="HelpButton" to="." method="open_menu"]
+[connection signal="pressed" from="HelpButton" to="." method="toggle_menu"]
 [connection signal="closed" from="Menu" to="." method="close_menu"]
 [connection signal="pressed" from="GameOverPanel/ColorRect/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="GameOverPanel/ColorRect/Credits" to="." method="_on_credits_pressed"]
