@@ -49,6 +49,14 @@ var selected_button: TextureButton
 var surbrillanced_tile_coords: Vector2i
 var current_cursor: Texture2D
 
+@onready var buttons_upgrade = [
+	$RackOutils/Buttons/PlantesBleues/PBButton/PBBetter,
+	$RackOutils/Buttons/PlantesRouges/PRButton/PRBetter,
+	$RackOutils/Buttons/Cisors/CButton/CBetter,
+	$RackOutils/Buttons/WateringCan/WCButton/WCBetter,
+]
+
+
 func _ready():
 	display_moneyy()
 	$CopTimer.start()
@@ -77,6 +85,11 @@ func _physics_process(delta: float) -> void:
 	if moneyy >= 500:
 		open_info_2()
 		RATIO_MAF = 0.3
+		for bu in buttons_upgrade:
+			bu.modulate = Color(1.0, 1.0, 1.0, 1.0)
+	else:
+		for bu in buttons_upgrade:
+			bu.modulate = Color(0.5, 0.35, 0.5, 1.0)
 	
 	if moneyy <= 6.0 and len($Plants.get_children()) == 0:
 		moneyy += 5  # anti soft-lock
@@ -262,19 +275,19 @@ func _on_credits_pressed() -> void:
 	
 func handle_blue_seeds_improvement(id):
 	if try_to_upgrade(Mode.PLANT_BLUE_MODE):
-		$RackOutils/Buttons/PlantesBleues/PBButton/PBBetter.queue_free()
+		$RackOutils/Buttons/PlantesBleues/PBButton/PBBetter.hide()
 
 func handle_red_seeds_improvement(id):
 	if try_to_upgrade(Mode.PLANT_RED_MODE):
-		$RackOutils/Buttons/PlantesRouges/PRButton/PRBetter .queue_free()
+		$RackOutils/Buttons/PlantesRouges/PRButton/PRBetter.hide()
 
 func handle_cissors_improvement(id):
 	if try_to_upgrade(Mode.CUT_MODE):
-		$RackOutils/Buttons/Cisors/CButton/CBetter.queue_free()
+		$RackOutils/Buttons/Cisors/CButton/CBetter.hide()
 
 func handle_watering_can_improvement(id):
 	if try_to_upgrade(Mode.GROW_MODE):
-		$RackOutils/Buttons/WateringCan/WCButton/WCBetter.queue_free()
+		$RackOutils/Buttons/WateringCan/WCButton/WCBetter.hide()
 
 func try_to_upgrade(mode):
 	if not upgraded[mode] and moneyy >= 400.0:
