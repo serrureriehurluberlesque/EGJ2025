@@ -261,7 +261,7 @@ func show_game_over() -> void:
 	Input.set_custom_mouse_cursor(null)
 	$AudioStreamPlayer.stop()
 	$GameOverPanel.show()
-	$GameOverPanel/GameOverMusic.start()
+	$GameOverPanel/GameOverMusic.play()
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
