@@ -54,7 +54,9 @@ func _ready():
 	$CopTimer.start()
 	plant_blue_mode()
 	$Map.get_cell_tile_data(Vector2i(0,0)).z_index = 10
-	toggle_menu()
+	
+	if Global.first_time:
+		toggle_menu()
 
 func _input(event):
 	if event.is_action_pressed("plant_blue_mode"):
@@ -221,6 +223,7 @@ func show_game_over() -> void:
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
+	Global.first_time = false
 	get_tree().reload_current_scene()
 
 
