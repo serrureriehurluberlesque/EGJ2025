@@ -69,7 +69,7 @@ func _input(event):
 		grow_mode()
 
 func _physics_process(delta: float) -> void:
-	if moneyy >= 200:
+	if moneyy >= 1000:
 		for u in upgraded:
 			upgraded[u] = true
 	
