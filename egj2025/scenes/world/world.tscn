@@ -588,19 +588,21 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("18_bt7bg")
-volume_db = -10.06
 autoplay = true
 
 [node name="Cut" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("20_6hctx")
+volume_db = 20.0
 attenuation = 0.01
 
 [node name="Grow" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_ues17")
+volume_db = 7.0
 attenuation = 0.01
 
 [node name="Plant" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_xq18t")
+volume_db = 2.0
 attenuation = 0.01
 max_polyphony = 10
 
