@@ -3,7 +3,7 @@ extends Node2D
 signal closed
 
 var explanation = "
-Vous êtes un pauvre cultivateur de fleur, et votre unique option pour gagner de l'argent est de cultiver les [i]fleurs interdites de Ouïd[/i].\n
+Tu es un pauvre cultivateur de fleur, et ton unique option pour gagner de l'argent est de cultiver les [i]fleurs interdites de Ouïd[/i].\n
 Les contrôles de polices sont fréquents. Pour faire diversion, il pourrait être utile de tout de même cultiver des fleurs normales.\n
 [u]Outils[/u]
 [ul]
@@ -21,13 +21,14 @@ Les contrôles de polices sont fréquents. Pour faire diversion, il pourrait êt
 "
 
 var explanation2 = "
-[u]Des nouveautés[/u]
-Les révolutionnaires gagnent du pouvoir. Ils sont fermement contre le fait de cultiver des fleurs à pertes pour le système.
-Faites attention à ce qu'ils ne voient pas de fleur bleue dans votre champ !\n
+Tu auras bientôt tes vacances aux Caraïbes à 5000$. Fais vite, les révolutionnaires Drouïdes Éclairés commencent à rôder.
+Ils sont fermement contre le fait de cultiver des fleurs à perte pour le système.
+Fais attention à ce qu'ils ne voient pas de fleur bleue dans ton champ !\n
 [u]Améliorations[/u]
-Bonne nouvelle : vous pouver améliorer vos outils pour être plus efficace !\n
+Bonne nouvelle : tu peux améliorer tes outils pour être plus efficace !\n
 [center][table=2]
 [cell]Outil[/cell][cell]Coût ($)[/cell]
+[cell] [img]res://scenes/world/assets/sacgrainesbleu.png[/img] [/cell][cell]400 $[/cell]
 [cell] [img]res://scenes/world/assets/sacgrainesrouge.png[/img] [/cell][cell]400 $[/cell]
 [cell] [img]res://scenes/world/assets/secateur.png[/img] [/cell][cell]400 $[/cell]
 [cell] [img]res://scenes/world/assets/arrosoir.png[/img] [/cell][cell]400 $[/cell]
@@ -41,7 +42,7 @@ func _ready() -> void:
 
 func show_level2_info():
 	$Background/Explanation.text = explanation2
-	$Background/Title.text = ""
+	$Background/Title.text = "Tu y es presque !"
 
 func _on_close_button_pressed() -> void:
 	closed.emit()

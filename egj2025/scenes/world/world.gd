@@ -45,7 +45,7 @@ var upgraded = {
 
 var plants = {}
 var total_cop = 0
-var moneyy = 100.0
+var moneyy = 500.0
 var displayed_moneyy = 100.0
 var current_mode: Mode
 var selected_button: TextureButton
