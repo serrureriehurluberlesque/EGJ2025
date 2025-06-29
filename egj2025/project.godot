@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="EGJ2025"
-run/main_scene="uid://b5r4k747kchl"
+run/main_scene="uid://dbl5cst233y8e"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://coupf12j5urny"
 
