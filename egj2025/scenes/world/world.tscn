@@ -383,7 +383,7 @@ stretch_mode = 3
 [node name="Menu" parent="." instance=ExtResource("12_srmg5")]
 visible = false
 z_index = 100
-position = Vector2(313, 190)
+position = Vector2(311, 126)
 
 [node name="CreditsPanel" type="TextureRect" parent="."]
 visible = false
