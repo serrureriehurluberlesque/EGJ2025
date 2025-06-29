@@ -75,9 +75,7 @@ func _input(event):
 
 func _physics_process(delta: float) -> void:
 	if moneyy >= 1000:
-		for u in upgraded:
-			upgraded[u] = true
-	
+		open_info_2()	
 	
 	var mouse_position = get_viewport().get_mouse_position()
 	var map_coordss = [$Map.local_to_map(mouse_position)]
@@ -254,15 +252,15 @@ func handle_blue_seeds_improvement(id):
 
 func handle_red_seeds_improvement(id):
 	if try_to_upgrade(Mode.PLANT_RED_MODE):
-		$RackOutils/Buttons/PlantesRouges/PBButton/PBBetter.queue_free()
+		$RackOutils/Buttons/PlantesRouges/PRButton/PRBetter .queue_free()
 
 func handle_cissors_improvement(id):
 	if try_to_upgrade(Mode.CUT_MODE):
-		$RackOutils/Buttons/Cisors/PBButton/PBBetter.queue_free()
+		$RackOutils/Buttons/Cisors/CButton/CBetter.queue_free()
 
 func handle_watering_can_improvement(id):
 	if try_to_upgrade(Mode.GROW_MODE):
-		$RackOutils/Buttons/WateringCan/PBButton/PBBetter.queue_free()
+		$RackOutils/Buttons/WateringCan/WCButton/WCBetter.queue_free()
 
 func try_to_upgrade(mode):
 	if not upgraded[mode] and moneyy >= 1000.0:
@@ -270,3 +268,6 @@ func try_to_upgrade(mode):
 		upgraded[mode] = true
 		return true
 	return false
+
+func open_info_2():
+	pass # TODO
