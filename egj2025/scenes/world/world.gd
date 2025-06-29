@@ -259,7 +259,9 @@ func show_game_over() -> void:
 	await get_tree().create_timer(3).timeout
 	get_tree().paused = true
 	Input.set_custom_mouse_cursor(null)
+	$AudioStreamPlayer.stop()
 	$GameOverPanel.show()
+	$GameOverPanel/GameOverMusic.start()
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false

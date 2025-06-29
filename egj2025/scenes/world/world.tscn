@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cone1vfjta5ci"]
+[gd_scene load_steps=33 format=4 uid="uid://cone1vfjta5ci"]
 
 [ext_resource type="Texture2D" uid="uid://cfeotk3njv6aq" path="res://scenes/world/assets/tileset.png" id="1_dphjl"]
 [ext_resource type="Texture2D" uid="uid://dkrn213gaexf7" path="res://scenes/world/assets/background.png" id="2_m114p"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://4w3ucb2f3pfn" path="res://scenes/menu/assets/help_button_hover.png" id="14_bt7bg"]
 [ext_resource type="AudioStream" uid="uid://dltp2tpx0sfmg" path="res://scenes/world/assets/HappyLoop.ogg" id="18_bt7bg"]
 [ext_resource type="Texture2D" uid="uid://bu8hf1ush1x3p" path="res://scenes/menu/assets/EndingScene2.png" id="19_ues17"]
+[ext_resource type="AudioStream" uid="uid://bpcvgks8lje0m" path="res://scenes/world/assets/WeirdStop.ogg" id="19_xq18t"]
 [ext_resource type="AudioStream" uid="uid://nyw331jowocg" path="res://sounds/cut.wav" id="20_6hctx"]
 [ext_resource type="AudioStream" uid="uid://dlk8atnjd0576" path="res://sounds/arrosoir.wav" id="21_ues17"]
 [ext_resource type="AudioStream" uid="uid://xrmx4fdeq52k" path="res://sounds/seed.wav" id="22_xq18t"]
@@ -546,7 +547,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 22
-text = "Tu t'es fait attrapé par la police :'("
+text = "Tu t'es fait attraper par la police :'("
 autowrap_mode = 3
 
 [node name="Gameover" type="Label" parent="GameOverPanel/ColorRect"]
@@ -588,6 +589,9 @@ offset_top = 167.0
 offset_right = 550.0
 offset_bottom = 209.0
 text = "Credits"
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="GameOverPanel"]
+stream = ExtResource("19_xq18t")
 
 [node name="WinPanel" type="TextureRect" parent="."]
 visible = false
