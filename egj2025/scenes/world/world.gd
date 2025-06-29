@@ -32,6 +32,7 @@ var RATIO_MAF = 0.0
 const RATIO_MEC = 0.0
 
 const LEVEL2_MONEY = 500
+const WIN_MONEY = 5000
 
 enum Mode {PLANT_RED_MODE, PLANT_BLUE_MODE, CUT_MODE, GROW_MODE}
 
@@ -152,6 +153,10 @@ func _physics_process(delta: float) -> void:
 			
 	if moneyy >= LEVEL2_MONEY and not level2:
 		launch_level2()
+	
+	if moneyy >= WIN_MONEY:
+		show_win()
+		
 		
 func can_plant(map_coords: Vector2i):
 	return $Map.get_cell_atlas_coords(map_coords) in EARTH_TILES_ATLAS_COORDS \
@@ -309,3 +314,9 @@ func launch_level2():
 	
 	$Menu.show_level2_info()
 	toggle_menu()
+
+func show_win() -> void:
+	await get_tree().create_timer(1).timeout
+	get_tree().paused = true
+	Input.set_custom_mouse_cursor(null)
+	$WinPanel.show()
