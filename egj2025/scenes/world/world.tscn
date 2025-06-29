@@ -592,6 +592,7 @@ text = "Credits"
 
 [node name="GameOverMusic" type="AudioStreamPlayer" parent="GameOverPanel"]
 stream = ExtResource("19_xq18t")
+volume_db = -10.0
 
 [node name="WinPanel" type="TextureRect" parent="."]
 visible = false
@@ -640,7 +641,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 22
-text = "Tu arrives a te payer tes vacances aux caraïbes. Youpie!f100"
+text = "Tu arrives a te payer tes vacances aux caraïbes. Youpie!"
 autowrap_mode = 3
 
 [node name="Gameover" type="Label" parent="WinPanel/ColorRect"]
@@ -691,21 +692,22 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("18_bt7bg")
+volume_db = -10.0
 autoplay = true
 
 [node name="Cut" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("20_6hctx")
-volume_db = 20.0
+volume_db = 16.0
 attenuation = 0.01
 
 [node name="Grow" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_ues17")
-volume_db = 7.0
+volume_db = 12.0
 attenuation = 0.01
 
 [node name="Plant" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_xq18t")
-volume_db = 2.0
+volume_db = 4.0
 attenuation = 0.01
 max_polyphony = 10
 

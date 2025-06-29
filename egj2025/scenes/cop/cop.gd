@@ -147,7 +147,7 @@ func is_ok():
 func update_bulle():
 	if inited:
 		if busted:
-			$Bulle.update_text(" Il n'y avait pas de malentendu, chenapan! ")
+			$Bulle.update_text(" Mais c'est de la Ouïd, chenapan ! ")
 		elif is_ok():
 			$Bulle.update_text(" Ok, ça semble en ordre... ")
 		else:

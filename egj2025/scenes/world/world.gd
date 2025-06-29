@@ -32,7 +32,7 @@ var RATIO_MAF = 0.0
 const RATIO_MEC = 0.0
 
 const LEVEL2_MONEY = 500
-const WIN_MONEY = 5000
+const WIN_MONEY = 3000
 
 enum Mode {PLANT_RED_MODE, PLANT_BLUE_MODE, CUT_MODE, GROW_MODE}
 
@@ -45,7 +45,7 @@ var upgraded = {
 
 var plants = {}
 var total_cop = 0
-var moneyy = 500.0
+var moneyy = 100.0
 var displayed_moneyy = 100.0
 var current_mode: Mode
 var selected_button: TextureButton
@@ -234,11 +234,11 @@ func _on_cop_timer_timeout() -> void:
 			n += 1
 			n *= 0.99
 	
-	n *= 0.6
+	n *= 0.5
 	if not look_ilegal:
 		n *= 0.5
 	
-	n = round(max(0.6 + total_cop / 3.0, n + total_cop / 3.0))
+	n = round(max(0.6 + total_cop / 3.5, n + total_cop / 3.5))
 	n = min(n, round(2 + total_cop * 4))
 	
 	new_cop.position = $CopSpawn.position
@@ -246,7 +246,7 @@ func _on_cop_timer_timeout() -> void:
 	new_cop.connect("bust", show_game_over)
 	new_cop.connect("start_talking", talking)
 	add_child(new_cop)
-	$CopTimer.wait_time = max(1.5, WAIT_COP * 0.9 ** total_cop * (0.75 + randf() / 2.0))
+	$CopTimer.wait_time = max(1.5, WAIT_COP * 0.95 ** total_cop * (0.75 + randf() / 2.0))
 	total_cop += 1
 	$CopTimer.start()
 
