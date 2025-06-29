@@ -501,6 +501,7 @@ text = "[b]Assets and bardic business[/b]: Michele Oliosi
 [b]GameDev and wizardry[/b]: Elsa Weber, Hugo Dupraz"
 
 [node name="GameOverPanel" type="TextureRect" parent="."]
+visible = false
 z_index = 50
 layout_mode = 1
 anchors_preset = -1
@@ -639,7 +640,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 22
-text = "Tu arrives a te payer tes vacances aux caraïbes. Youpie!"
+text = "Tu arrives a te payer tes vacances aux caraïbes. Youpie!f100"
 autowrap_mode = 3
 
 [node name="Gameover" type="Label" parent="WinPanel/ColorRect"]
@@ -699,12 +700,12 @@ attenuation = 0.01
 
 [node name="Grow" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_ues17")
-volume_db = 12.0
+volume_db = 7.0
 attenuation = 0.01
 
 [node name="Plant" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_xq18t")
-volume_db = 4.0
+volume_db = 2.0
 attenuation = 0.01
 max_polyphony = 10
 
