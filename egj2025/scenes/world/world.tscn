@@ -592,7 +592,6 @@ text = "Credits"
 
 [node name="GameOverMusic" type="AudioStreamPlayer" parent="GameOverPanel"]
 stream = ExtResource("19_xq18t")
-volume_db = -10.0
 
 [node name="WinPanel" type="TextureRect" parent="."]
 visible = false
@@ -692,12 +691,11 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("18_bt7bg")
-volume_db = -10.0
 autoplay = true
 
 [node name="Cut" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("20_6hctx")
-volume_db = 16.0
+volume_db = 20.0
 attenuation = 0.01
 
 [node name="Grow" type="AudioStreamPlayer2D" parent="."]
