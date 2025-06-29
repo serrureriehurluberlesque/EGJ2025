@@ -111,9 +111,9 @@ func _physics_process(delta: float) -> void:
 			for map_coords in map_coordss:
 				if map_coords in plants.keys():
 					plants[map_coords].cut(delta)
-			$Cut.set_position(mouse_position)
-			if not $Cut.is_playing():
-				$Cut.play()
+					$Cut.set_position(mouse_position)
+					if not $Cut.is_playing():
+						$Cut.play()
 		elif current_mode == Mode.GROW_MODE:
 			for map_coords in map_coordss:
 				if map_coords in plants.keys():
@@ -121,9 +121,9 @@ func _physics_process(delta: float) -> void:
 			for map_coords in [map_coordss[0]]:
 				$Eau.set_position(mouse_position)
 				$Eau.arrose += delta
-			$Grow.set_position(mouse_position)
-			if not $Grow.is_playing():
-				$Grow.play()
+				$Grow.set_position(mouse_position)
+				if not $Grow.is_playing():
+					$Grow.play()
 		elif (current_mode == Mode.PLANT_RED_MODE or current_mode == Mode.PLANT_BLUE_MODE):
 			for map_coords in map_coordss:
 				if can_plant(map_coords):
@@ -142,9 +142,8 @@ func _physics_process(delta: float) -> void:
 					# Update moneyy
 					self.moneyy -= SEED_COST
 					display_moneyy()
-			$Plant.set_position(mouse_position)
-			if not $Plant.is_playing():
-				$Plant.play()
+					$Plant.set_position(mouse_position)
+					$Plant.play()
 	
 	for map_coords in [map_coordss[0]]:
 		if map_coords != surbrillanced_tile_coords:

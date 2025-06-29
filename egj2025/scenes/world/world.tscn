@@ -597,6 +597,7 @@ attenuation = 0.01
 [node name="Plant" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_xq18t")
 attenuation = 0.01
+max_polyphony = 10
 
 [connection signal="timeout" from="CopTimer" to="." method="_on_cop_timer_timeout"]
 [connection signal="pressed" from="RackOutils/Buttons/PlantesBleues/PBButton" to="." method="plant_blue_mode"]

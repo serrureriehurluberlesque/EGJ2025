@@ -7,6 +7,7 @@ signal start_talking
 @export var to_be_seen := 3
 @export var is_maf := false
 
+var seen_one = false
 var busted = false
 var v = 1.0
 var walking = true
@@ -123,6 +124,7 @@ func regarde_attentivement(area):
 			var ok = is_ok()
 			if check_legal(area.is_legal):
 				to_be_seen -= 1
+				seen_one = true
 				regarded.append(area)
 			else:
 				bust.emit()
@@ -149,4 +151,4 @@ func update_bulle():
 		elif is_ok():
 			$Bulle.update_text(" ... ")
 		else:
-			$Bulle.update_text(" Je veux voir encore %d %s ! " % [to_be_seen, "[img]res://scenes/Bulle/assets/rouge.png[/img]" if is_maf else "[img]res://scenes/Bulle/assets/bleu.png[/img]"])
+			$Bulle.update_text(" Je veux voir %s%d %s ! " % ["encore " if seen_one else "", to_be_seen, "[img]res://scenes/Bulle/assets/rouge.png[/img]" if is_maf else "[img]res://scenes/Bulle/assets/bleu.png[/img]"])
