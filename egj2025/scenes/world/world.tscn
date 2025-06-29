@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cone1vfjta5ci"]
+[gd_scene load_steps=31 format=4 uid="uid://cone1vfjta5ci"]
 
 [ext_resource type="Texture2D" uid="uid://cfeotk3njv6aq" path="res://scenes/world/assets/tileset.png" id="1_dphjl"]
 [ext_resource type="Texture2D" uid="uid://dkrn213gaexf7" path="res://scenes/world/assets/background.png" id="2_m114p"]
@@ -19,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://8434qqaexg8f" path="res://scenes/menu/assets/Credits.png" id="13_umvgx"]
 [ext_resource type="Texture2D" uid="uid://4w3ucb2f3pfn" path="res://scenes/menu/assets/help_button_hover.png" id="14_bt7bg"]
 [ext_resource type="AudioStream" uid="uid://dltp2tpx0sfmg" path="res://scenes/world/assets/HappyLoop.ogg" id="18_bt7bg"]
+[ext_resource type="AudioStream" uid="uid://nyw331jowocg" path="res://sounds/cut.wav" id="20_6hctx"]
+[ext_resource type="AudioStream" uid="uid://dlk8atnjd0576" path="res://sounds/arrosoir.wav" id="21_ues17"]
+[ext_resource type="AudioStream" uid="uid://xrmx4fdeq52k" path="res://sounds/seed.wav" id="22_xq18t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sl2e5"]
 texture = ExtResource("1_dphjl")
@@ -576,15 +579,19 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_bt7bg")
+volume_db = -20.06
 autoplay = true
 
 [node name="Cut" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_6hctx")
 attenuation = 0.01
 
 [node name="Grow" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_ues17")
 attenuation = 0.01
 
 [node name="Plant" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_xq18t")
 attenuation = 0.01
 
 [connection signal="timeout" from="CopTimer" to="." method="_on_cop_timer_timeout"]
