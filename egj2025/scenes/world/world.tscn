@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cone1vfjta5ci"]
+[gd_scene load_steps=28 format=4 uid="uid://cone1vfjta5ci"]
 
 [ext_resource type="Texture2D" uid="uid://cfeotk3njv6aq" path="res://scenes/world/assets/tileset.png" id="1_dphjl"]
 [ext_resource type="Texture2D" uid="uid://dkrn213gaexf7" path="res://scenes/world/assets/background.png" id="2_m114p"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://coupf12j5urny" path="res://scenes/world/assets/arrosoir.png" id="8_gb53w"]
 [ext_resource type="PackedScene" uid="uid://cyklhmk04t4as" path="res://scenes/player/player.tscn" id="11_5qq27"]
 [ext_resource type="PackedScene" uid="uid://c76l4erpwru8m" path="res://scenes/menu/menu.tscn" id="12_srmg5"]
+[ext_resource type="Texture2D" uid="uid://xqo30ioohe1j" path="res://scenes/menu/assets/plus_amelioration.png" id="12_wbwoo"]
 [ext_resource type="Texture2D" uid="uid://bscvyp7bfj7oc" path="res://scenes/menu/assets/help_button.png" id="13_71ii3"]
 [ext_resource type="Texture2D" uid="uid://0pg4tt4w8r77" path="res://scenes/menu/assets/EndingScene.png" id="13_srmg5"]
 [ext_resource type="Texture2D" uid="uid://8434qqaexg8f" path="res://scenes/menu/assets/Credits.png" id="13_umvgx"]
@@ -170,6 +171,194 @@ collision_base_size = 0.7
 process_material = SubResource("ParticleProcessMaterial_6m72w")
 script = ExtResource("3_1fp7r")
 
+[node name="RackOutilsMieux" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -225.5
+offset_top = -156.0
+offset_right = 225.5
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+stretch_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="RackOutilsMieux"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlantesBleues" type="MarginContainer" parent="RackOutilsMieux/Buttons"]
+layout_mode = 2
+theme_override_constants/margin_left = 17
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 2
+
+[node name="PBButton" type="TextureButton" parent="RackOutilsMieux/Buttons/PlantesBleues"]
+layout_mode = 2
+texture_normal = ExtResource("4_t5ptc")
+
+[node name="PBimg" type="TextureRect" parent="RackOutilsMieux/Buttons/PlantesBleues/PBButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -40.5
+offset_right = 27.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_bq33v")
+
+[node name="PBLabel" type="Label" parent="RackOutilsMieux/Buttons/PlantesBleues/PBButton"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1"
+horizontal_alignment = 1
+
+[node name="PlantesRouges" type="MarginContainer" parent="RackOutilsMieux/Buttons"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 2
+
+[node name="PRButton" type="TextureButton" parent="RackOutilsMieux/Buttons/PlantesRouges"]
+layout_mode = 2
+texture_normal = ExtResource("4_t5ptc")
+
+[node name="PRimg" type="TextureRect" parent="RackOutilsMieux/Buttons/PlantesRouges/PRButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -41.5
+offset_right = 26.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_j2gmx")
+
+[node name="PRLabel" type="Label" parent="RackOutilsMieux/Buttons/PlantesRouges/PRButton"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "2"
+horizontal_alignment = 1
+
+[node name="Cisors" type="MarginContainer" parent="RackOutilsMieux/Buttons"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 2
+
+[node name="CButton" type="TextureButton" parent="RackOutilsMieux/Buttons/Cisors"]
+layout_mode = 2
+texture_normal = ExtResource("4_t5ptc")
+
+[node name="Cimg" type="TextureRect" parent="RackOutilsMieux/Buttons/Cisors/CButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -39.0
+offset_right = 45.5
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_1yooq")
+
+[node name="CLabel" type="Label" parent="RackOutilsMieux/Buttons/Cisors/CButton"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "3"
+horizontal_alignment = 1
+
+[node name="WateringCan" type="MarginContainer" parent="RackOutilsMieux/Buttons"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 17
+
+[node name="WCButton" type="TextureButton" parent="RackOutilsMieux/Buttons/WateringCan"]
+layout_mode = 2
+texture_normal = ExtResource("4_t5ptc")
+
+[node name="WCimg" type="TextureRect" parent="RackOutilsMieux/Buttons/WateringCan/WCButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.5
+offset_top = -74.0
+offset_right = 38.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_gb53w")
+
+[node name="WCLabel" type="Label" parent="RackOutilsMieux/Buttons/WateringCan/WCButton"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "4"
+horizontal_alignment = 1
+
 [node name="RackOutils" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -178,8 +367,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -225.5
-offset_top = -127.0
+offset_top = -123.0
 offset_right = 225.5
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_v5dby")
@@ -235,6 +425,18 @@ grow_vertical = 0
 text = "1"
 horizontal_alignment = 1
 
+[node name="PBBetter" type="MenuButton" parent="RackOutils/Buttons/PlantesBleues/PBButton"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 66.5
+offset_top = 75.0
+offset_right = 88.5
+offset_bottom = 96.0
+icon = ExtResource("12_wbwoo")
+item_count = 1
+popup/item_0/text = "Acheter amélioration"
+popup/item_0/id = 0
+
 [node name="PlantesRouges" type="MarginContainer" parent="RackOutils/Buttons"]
 layout_mode = 2
 theme_override_constants/margin_left = 2
@@ -276,6 +478,17 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "2"
 horizontal_alignment = 1
+
+[node name="PRBetter" type="MenuButton" parent="RackOutils/Buttons/PlantesRouges/PRButton"]
+unique_name_in_owner = true
+offset_left = 66.5
+offset_top = 75.0
+offset_right = 88.5
+offset_bottom = 96.0
+icon = ExtResource("12_wbwoo")
+item_count = 1
+popup/item_0/text = "Acheter amélioration"
+popup/item_0/id = 0
 
 [node name="Cisors" type="MarginContainer" parent="RackOutils/Buttons"]
 layout_mode = 2
@@ -319,6 +532,17 @@ grow_vertical = 0
 text = "3"
 horizontal_alignment = 1
 
+[node name="CBetter" type="MenuButton" parent="RackOutils/Buttons/Cisors/CButton"]
+unique_name_in_owner = true
+offset_left = 66.5
+offset_top = 75.0
+offset_right = 88.5
+offset_bottom = 96.0
+icon = ExtResource("12_wbwoo")
+item_count = 1
+popup/item_0/text = "Acheter amélioration"
+popup/item_0/id = 0
+
 [node name="WateringCan" type="MarginContainer" parent="RackOutils/Buttons"]
 layout_mode = 2
 theme_override_constants/margin_left = 2
@@ -360,6 +584,17 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "4"
 horizontal_alignment = 1
+
+[node name="WCBetter" type="MenuButton" parent="RackOutils/Buttons/WateringCan/WCButton"]
+unique_name_in_owner = true
+offset_left = 66.5
+offset_top = 75.0
+offset_right = 88.5
+offset_bottom = 96.0
+icon = ExtResource("12_wbwoo")
+item_count = 1
+popup/item_0/text = "Acheter amélioration"
+popup/item_0/id = 0
 
 [node name="Player" parent="." instance=ExtResource("11_5qq27")]
 position = Vector2(901, 960)
@@ -529,6 +764,10 @@ stream = ExtResource("18_bt7bg")
 autoplay = true
 
 [connection signal="timeout" from="CopTimer" to="." method="_on_cop_timer_timeout"]
+[connection signal="pressed" from="RackOutilsMieux/Buttons/PlantesBleues/PBButton" to="." method="plant_blue_mode"]
+[connection signal="pressed" from="RackOutilsMieux/Buttons/PlantesRouges/PRButton" to="." method="plant_red_mode"]
+[connection signal="pressed" from="RackOutilsMieux/Buttons/Cisors/CButton" to="." method="cut_mode"]
+[connection signal="pressed" from="RackOutilsMieux/Buttons/WateringCan/WCButton" to="." method="grow_mode"]
 [connection signal="pressed" from="RackOutils/Buttons/PlantesBleues/PBButton" to="." method="plant_blue_mode"]
 [connection signal="pressed" from="RackOutils/Buttons/PlantesRouges/PRButton" to="." method="plant_red_mode"]
 [connection signal="pressed" from="RackOutils/Buttons/Cisors/CButton" to="." method="cut_mode"]

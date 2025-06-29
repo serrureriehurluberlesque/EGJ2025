@@ -57,6 +57,11 @@ func _ready():
 	
 	if Global.first_time:
 		toggle_menu()
+	
+	%PBBetter.get_popup().connect("id_pressed", handle_blue_seeds_improvement)
+	%PRBetter.get_popup().connect("id_pressed", handle_red_seeds_improvement)
+	%CBetter.get_popup().connect("id_pressed", handle_cissors_improvement)
+	%WCBetter.get_popup().connect("id_pressed", handle_watering_can_improvement)
 
 func _input(event):
 	if event.is_action_pressed("plant_blue_mode"):
@@ -242,3 +247,12 @@ func _on_restart_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	$CreditsPanel.show()
+	
+func handle_blue_seeds_improvement(id):
+	pass # TODO handle blue seed improvement
+func handle_red_seeds_improvement(id):
+	pass # TODO handle red seed improvement
+func handle_cissors_improvement(id):
+	pass # TODO handle cissors improvement
+func handle_watering_can_improvement(id):
+	pass # TODO handle watering can improvement
