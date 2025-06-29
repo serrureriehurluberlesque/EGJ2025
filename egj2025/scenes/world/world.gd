@@ -77,7 +77,10 @@ func _physics_process(delta: float) -> void:
 	if moneyy >= 500:
 		open_info_2()
 		RATIO_MAF = 0.3
-		
+	
+	if moneyy <= 6.0 and len($Plants.get_children()) == 0:
+		moneyy += 5  # anti soft-lock
+		display_moneyy()
 	
 	var mouse_position = get_viewport().get_mouse_position()
 	var map_coordss = [$Map.local_to_map(mouse_position)]
