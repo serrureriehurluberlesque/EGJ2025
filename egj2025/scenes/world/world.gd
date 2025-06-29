@@ -28,7 +28,7 @@ const EARTH_PLANTED_ATLAS_COORDS = [
 
 const SEED_COST = 5.0
 const WAIT_COP= 40.0
-const RATIO_MAF = 0.0
+var RATIO_MAF = 0.0
 const RATIO_MEC = 0.0
 
 enum Mode {PLANT_RED_MODE, PLANT_BLUE_MODE, CUT_MODE, GROW_MODE}
@@ -74,8 +74,10 @@ func _input(event):
 		grow_mode()
 
 func _physics_process(delta: float) -> void:
-	if moneyy >= 1000:
-		open_info_2()	
+	if moneyy >= 500:
+		open_info_2()
+		RATIO_MAF = 0.3
+		
 	
 	var mouse_position = get_viewport().get_mouse_position()
 	var map_coordss = [$Map.local_to_map(mouse_position)]
@@ -263,8 +265,8 @@ func handle_watering_can_improvement(id):
 		$RackOutils/Buttons/WateringCan/WCButton/WCBetter.queue_free()
 
 func try_to_upgrade(mode):
-	if not upgraded[mode] and moneyy >= 1000.0:
-		moneyy -= 1000.0
+	if not upgraded[mode] and moneyy >= 400.0:
+		moneyy -= 400.0
 		upgraded[mode] = true
 		return true
 	return false

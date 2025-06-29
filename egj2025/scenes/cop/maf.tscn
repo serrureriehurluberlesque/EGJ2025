@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://de06ku1jejyw8"]
+[gd_scene load_steps=4 format=3 uid="uid://de06ku1jejyw8"]
 
 [ext_resource type="PackedScene" uid="uid://cxb35anmito8y" path="res://scenes/cop/cop.tscn" id="1_5yxjk"]
+[ext_resource type="Texture2D" uid="uid://b4t6j13xmrqy2" path="res://scenes/cop/assets/revolutionnaire.png" id="2_4wiqc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5yxjk"]
 blend_mode = 2
@@ -10,3 +11,4 @@ is_maf = true
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("CanvasItemMaterial_5yxjk")
+texture = ExtResource("2_4wiqc")
