@@ -54,9 +54,7 @@ func walk(delta):
 		var l = min(SPEED * delta * 1.0 if inited else 3.0, dp.length())
 		
 		set_position(get_position() + dp.normalized() * l)
-		self.z_index = get_position()[1] / 64
-		print(self.z_index)
-		
+		self.z_index = get_position()[1] / 64	
 
 
 func egalish(v1, v2):

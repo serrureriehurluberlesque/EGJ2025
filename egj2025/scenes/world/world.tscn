@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cone1vfjta5ci"]
+[gd_scene load_steps=23 format=4 uid="uid://cone1vfjta5ci"]
 
 [ext_resource type="Texture2D" uid="uid://cfeotk3njv6aq" path="res://scenes/world/assets/tileset.png" id="1_dphjl"]
 [ext_resource type="Script" uid="uid://byoreb471ajxb" path="res://scenes/world/world.gd" id="2_sl2e5"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cyklhmk04t4as" path="res://scenes/player/player.tscn" id="11_5qq27"]
 [ext_resource type="PackedScene" uid="uid://c76l4erpwru8m" path="res://scenes/menu/menu.tscn" id="12_srmg5"]
 [ext_resource type="Texture2D" uid="uid://0pg4tt4w8r77" path="res://scenes/menu/assets/EndingScene.png" id="13_srmg5"]
+[ext_resource type="Texture2D" uid="uid://8434qqaexg8f" path="res://scenes/menu/assets/Credits.png" id="13_umvgx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sl2e5"]
 texture = ExtResource("1_dphjl")
@@ -372,6 +373,49 @@ visible = false
 z_index = 100
 position = Vector2(313, 190)
 
+[node name="CreditsPanel" type="TextureRect" parent="."]
+visible = false
+z_index = 1000
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = 3.99997
+offset_right = 53.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_umvgx")
+
+[node name="Label" type="Label" parent="CreditsPanel"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 337.0
+offset_right = 525.0
+offset_bottom = 493.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Crédits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CreditsPanel"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 587.0
+offset_right = 706.0
+offset_bottom = 859.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[b]Visuels et musique[/b]: Michele Oliosi
+
+[b]Programmation[/b]: Hugo Dupraz
+
+[b]Programmation[/b]: Elsa Weber"
+
 [node name="GameOverPanel" type="TextureRect" parent="."]
 visible = false
 z_index = 50
@@ -445,13 +489,22 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -83.5
-offset_top = -71.0
-offset_right = 72.5
-offset_bottom = -27.0
+offset_left = -183.5
+offset_top = -72.0
+offset_right = -27.5
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Restart"
+
+[node name="Credits" type="Button" parent="GameOverPanel/ColorRect"]
+process_mode = 3
+layout_mode = 0
+offset_left = 395.0
+offset_top = 167.0
+offset_right = 550.0
+offset_bottom = 209.0
+text = "Credits"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -466,3 +519,4 @@ libraries = {
 [connection signal="pressed" from="HelpButton" to="." method="open_menu"]
 [connection signal="closed" from="Menu" to="." method="close_menu"]
 [connection signal="pressed" from="GameOverPanel/ColorRect/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOverPanel/ColorRect/Credits" to="." method="_on_credits_pressed"]
