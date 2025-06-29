@@ -70,8 +70,6 @@ func _ready():
 	
 	if Global.first_time:
 		toggle_menu()
-	
-
 
 func _input(event):
 	if event.is_action_pressed("plant_blue_mode"):
@@ -274,23 +272,29 @@ func _on_credits_pressed() -> void:
 	
 func handle_blue_seeds_improvement(id):
 	if try_to_upgrade(Mode.PLANT_BLUE_MODE):
-		$RackOutils/Buttons/PlantesBleues/PBButton/PBBetter.hide()
-		$RackOutils/Buttons/PlantesBleues/PBButton/PBimg.texture = load("res://scenes/world/assets/passeoire_blue.png")
+		%PBBetter.hide()
+		graines_bleues = load("res://scenes/world/assets/passeoire_blue.png")
+		$RackOutils/Buttons/PlantesBleues/PBButton/PBimg.texture = graines_bleues
 
 func handle_red_seeds_improvement(id):
 	if try_to_upgrade(Mode.PLANT_RED_MODE):
-		$RackOutils/Buttons/PlantesRouges/PRButton/PRBetter.hide()
-		$RackOutils/Buttons/PlantesRouges/PRButton/PRimg.texture = load("res://scenes/world/assets/passeoire_red.png")
+		%PRBetter.hide()
+		graines_rouges = load("res://scenes/world/assets/passeoire_red.png")
+		$RackOutils/Buttons/PlantesRouges/PRButton/PRimg.texture = graines_rouges
+
 
 func handle_cissors_improvement(id):
 	if try_to_upgrade(Mode.CUT_MODE):
-		$RackOutils/Buttons/Cisors/CButton/CBetter.hide()
-		$RackOutils/Buttons/Cisors/CButton/Cimg.texture = load("res://scenes/world/assets/tronconneuse.png")
+		%CBetter.hide()
+		secateur = load("res://scenes/world/assets/tronconneuse.png")
+		$RackOutils/Buttons/Cisors/CButton/Cimg.texture = secateur
 
 func handle_watering_can_improvement(id):
 	if try_to_upgrade(Mode.GROW_MODE):
-		$RackOutils/Buttons/WateringCan/WCButton/WCBetter.hide()
-		$RackOutils/Buttons/WateringCan/WCButton/WCimg.texture = load("res://scenes/world/assets/drone_arroseur.png")
+		%WCBetter.hide()
+		arrosoir = load("res://scenes/world/assets/drone_arroseur.png")
+		$RackOutils/Buttons/WateringCan/WCButton/WCimg.texture = arrosoir
+		
 
 func try_to_upgrade(mode):
 	if not upgraded[mode] and moneyy >= 400.0:
