@@ -1,4 +1,9 @@
-"We have received a report that you have planted 10 illegal Ouïd flowers !"
+"Nous avons ouï dire que vous avez planté 10 fleurs de Ouïd illégales !"
+"Je vous assure monsieur l'agent, c'est un malentendu."
+
+Dans ce petit simulateur de plantation de Ouïd en vue du dessus, vous devez vous assurer que vos plantons problématiques ne sont pas repérés. Ce jeu est en français mais il n'y a pas beaucoup de texte.
+
+"We have received a report that you have planted 10 illegal Ouïd flowers!"
 "I assure you officer, it's a misunderstanding."
 
-In this small top-down Ouïd farming simulator, you need to ensure that troublesome plantlings are not found out.
+In this small top-down Ouïd farming simulator, you need to ensure that troublesome plantlings are not found out. The game language is in French but it does not require much reading.
