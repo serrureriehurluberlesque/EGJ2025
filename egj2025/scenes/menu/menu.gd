@@ -20,11 +20,28 @@ Les contrôles de polices sont fréquents. Pour faire diversion, il pourrait êt
 [/table][/center]
 "
 
+var explanation2 = "
+[u]Des nouveautés[/u]
+Les révolutionnaires gagnent du pouvoir. Ils sont fermement contre le fait de cultiver des fleurs à pertes pour le système.
+Faites attention à ce qu'ils ne voient pas de fleur bleue dans votre champ !\n
+[u]Améliorations[/u]
+Bonne nouvelle : vous pouver améliorer vos outils pour être plus efficace !\n
+[center][table=2]
+[cell]Outil[/cell][cell]Coût ($)[/cell]
+[cell] [img]res://scenes/world/assets/sacgrainesrouge.png[/img] [/cell][cell]400 $[/cell]
+[cell] [img]res://scenes/world/assets/secateur.png[/img] [/cell][cell]400 $[/cell]
+[cell] [img]res://scenes/world/assets/arrosoir.png[/img] [/cell][cell]400 $[/cell]
+[/table][/center]
+"
+
 const COST_REVENUE_LIST = [5, 0, 5, 25]
 
 func _ready() -> void:
 	$Background/Explanation.text = explanation % COST_REVENUE_LIST
 
+func show_level2_info():
+	$Background/Explanation.text = explanation2
+	$Background/Title.text = ""
 
 func _on_close_button_pressed() -> void:
 	closed.emit()

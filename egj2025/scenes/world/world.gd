@@ -31,6 +31,8 @@ const WAIT_COP= 40.0
 var RATIO_MAF = 0.0
 const RATIO_MEC = 0.0
 
+const LEVEL2_MONEY = 500
+
 enum Mode {PLANT_RED_MODE, PLANT_BLUE_MODE, CUT_MODE, GROW_MODE}
 
 var upgraded = {
@@ -49,6 +51,8 @@ var selected_button: TextureButton
 var surbrillanced_tile_coords: Vector2i
 var current_cursor: Texture2D
 
+var level2 = false
+
 @onready var buttons_upgrade = [
 	$RackOutils/Buttons/PlantesBleues/PBButton/PBBetter,
 	$RackOutils/Buttons/PlantesRouges/PRButton/PRBetter,
@@ -66,10 +70,7 @@ func _ready():
 	if Global.first_time:
 		toggle_menu()
 	
-	%PBBetter.get_popup().connect("id_pressed", handle_blue_seeds_improvement)
-	%PRBetter.get_popup().connect("id_pressed", handle_red_seeds_improvement)
-	%CBetter.get_popup().connect("id_pressed", handle_cissors_improvement)
-	%WCBetter.get_popup().connect("id_pressed", handle_watering_can_improvement)
+
 
 func _input(event):
 	if event.is_action_pressed("plant_blue_mode"):
@@ -82,10 +83,6 @@ func _input(event):
 		grow_mode()
 
 func _physics_process(delta: float) -> void:
-	if moneyy >= 500:
-		open_info_2()
-		RATIO_MAF = 0.3
-	
 	if moneyy <= 6.0 and len($Plants.get_children()) == 0:
 		moneyy += 5  # anti soft-lock
 		display_moneyy()
@@ -152,6 +149,9 @@ func _physics_process(delta: float) -> void:
 				#$Map.get_cell_tile_data(surbrillanced_tile_coords).set_modulate(Color(1, 1, 1, 1))
 				plants[surbrillanced_tile_coords].stop_highlight()
 			surbrillanced_tile_coords = map_coords
+			
+	if moneyy > LEVEL2_MONEY and not level2:
+		launch_level2()
 		
 func can_plant(map_coords: Vector2i):
 	return $Map.get_cell_atlas_coords(map_coords) in EARTH_TILES_ATLAS_COORDS \
@@ -290,5 +290,18 @@ func try_to_upgrade(mode):
 		return true
 	return false
 
-func open_info_2():
-	pass # TODO
+func launch_level2():
+	RATIO_MAF = 0.3
+	level2 = true
+	%PBBetter.show()
+	%PRBetter.show()
+	%CBetter.show()
+	%WCBetter.show()
+	
+	%PBBetter.get_popup().connect("id_pressed", handle_blue_seeds_improvement)
+	%PRBetter.get_popup().connect("id_pressed", handle_red_seeds_improvement)
+	%CBetter.get_popup().connect("id_pressed", handle_cissors_improvement)
+	%WCBetter.get_popup().connect("id_pressed", handle_watering_can_improvement)
+	
+	$Menu.show_level2_info()
+	toggle_menu()

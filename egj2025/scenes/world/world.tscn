@@ -242,13 +242,14 @@ horizontal_alignment = 1
 
 [node name="PBBetter" type="MenuButton" parent="RackOutils/Buttons/PlantesBleues/PBButton"]
 unique_name_in_owner = true
-modulate = Color(0.42585, 0.3417, 0.51, 1)
+visible = false
 layout_mode = 0
-offset_left = 66.5
-offset_top = 75.0
-offset_right = 88.5
+offset_left = 10.0
+offset_top = 71.0
+offset_right = 89.0
 offset_bottom = 96.0
 icon = ExtResource("12_wbwoo")
+icon_alignment = 2
 item_count = 1
 popup/item_0/text = "Acheter amélioration"
 popup/item_0/id = 0
@@ -297,13 +298,14 @@ horizontal_alignment = 1
 
 [node name="PRBetter" type="MenuButton" parent="RackOutils/Buttons/PlantesRouges/PRButton"]
 unique_name_in_owner = true
-modulate = Color(0.427451, 0.341176, 0.509804, 1)
+visible = false
 layout_mode = 0
-offset_left = 66.5
-offset_top = 75.0
-offset_right = 88.5
+offset_left = 10.0
+offset_top = 71.0
+offset_right = 89.0
 offset_bottom = 96.0
 icon = ExtResource("12_wbwoo")
+icon_alignment = 2
 item_count = 1
 popup/item_0/text = "Acheter amélioration"
 popup/item_0/id = 0
@@ -352,13 +354,14 @@ horizontal_alignment = 1
 
 [node name="CBetter" type="MenuButton" parent="RackOutils/Buttons/Cisors/CButton"]
 unique_name_in_owner = true
-modulate = Color(0.427451, 0.341176, 0.509804, 1)
+visible = false
 layout_mode = 0
-offset_left = 66.5
-offset_top = 75.0
-offset_right = 88.5
+offset_left = 10.0
+offset_top = 71.0
+offset_right = 89.0
 offset_bottom = 96.0
 icon = ExtResource("12_wbwoo")
+icon_alignment = 2
 item_count = 1
 popup/item_0/text = "Acheter amélioration"
 popup/item_0/id = 0
@@ -407,13 +410,14 @@ horizontal_alignment = 1
 
 [node name="WCBetter" type="MenuButton" parent="RackOutils/Buttons/WateringCan/WCButton"]
 unique_name_in_owner = true
-modulate = Color(0.427451, 0.341176, 0.509804, 1)
+visible = false
 layout_mode = 0
-offset_left = 66.5
-offset_top = 75.0
-offset_right = 88.5
+offset_left = 10.0
+offset_top = 71.0
+offset_right = 89.0
 offset_bottom = 96.0
 icon = ExtResource("12_wbwoo")
+icon_alignment = 2
 item_count = 1
 popup/item_0/text = "Acheter amélioration"
 popup/item_0/id = 0
