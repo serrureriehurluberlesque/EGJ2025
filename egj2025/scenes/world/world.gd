@@ -243,7 +243,10 @@ func _on_cop_timer_timeout() -> void:
 	
 	new_cop.position = $CopSpawn.position
 	new_cop.to_be_seen = n
-	new_cop.connect("bust", show_game_over)
+	if new_cop.is_maf :
+		new_cop.connect("bust", show_game_over2)
+	else :
+		new_cop.connect("bust", show_game_over)
 	new_cop.connect("start_talking", talking)
 	add_child(new_cop)
 	$CopTimer.wait_time = max(1.5, WAIT_COP * 0.95 ** total_cop * (0.75 + randf() / 2.0))
@@ -262,6 +265,14 @@ func show_game_over() -> void:
 	$AudioStreamPlayer.stop()
 	$GameOverPanel.show()
 	$GameOverPanel/GameOverMusic.play()
+	
+func show_game_over2() -> void:
+	await get_tree().create_timer(3).timeout
+	get_tree().paused = true
+	Input.set_custom_mouse_cursor(null)
+	$AudioStreamPlayer.stop()
+	$GameOverPanel2.show()
+	$GameOverPanel2/GameOverMusic.play()
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
